@@ -1,6 +1,6 @@
 package com.jstarczewski.inputconsumer;
 
-import com.jstarczewski.Controller.Controller;
+import com.jstarczewski.controller.Controller;
 import com.jstarczewski.util.CallBackMessages;
 
 import java.io.BufferedReader;
@@ -16,7 +16,7 @@ public class InputConsumer {
      * Input is a Singleton, because we always want only one object to be working with BufferedReader, so less NullPointerExceptions
      * will happen, because there wont be a situation when two object having two BufferedReaders will access same data.
      * <p>
-     * InputConsumer is responsible for consuming data from System.in, passing it to Controller and then sending CallBack message
+     * InputConsumer is responsible for consuming data from System.in, passing it to controller and then sending CallBack message
      * to our Main class
      */
 

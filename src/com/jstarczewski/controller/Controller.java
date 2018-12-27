@@ -1,12 +1,13 @@
-package com.jstarczewski.Controller;
+package com.jstarczewski.controller;
 
-import com.jstarczewski.Board.Board;
+import com.jstarczewski.board.Board;
 import com.jstarczewski.util.CallBackMessages;
+import com.jstarczewski.util.InputDataParser;
 
 
 /**
- * Controller class is responsible for 'controlling' what is going on based on input received from InputConsumer
- * */
+ * controller class is responsible for 'controlling' what is going on based on input received from InputConsumer
+ */
 
 public class Controller {
 
@@ -19,15 +20,17 @@ public class Controller {
     }
 
     public String setBoardSize(String size) {
-       return CallBackMessages.successCallback;
+        board.setBoardSize(Integer.valueOf(size));
+        return CallBackMessages.successCallback;
     }
 
     public String fillBoard(String config) {
+        board.fillBoardWithBlackSpots(InputDataParser.parseBlackSpotInputData(config));
         return CallBackMessages.successCallback;
     }
 
     private String makeMove() {
-        return "Move";
+        return board.toString();
     }
 
 

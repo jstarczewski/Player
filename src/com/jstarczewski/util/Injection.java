@@ -1,7 +1,7 @@
 package com.jstarczewski.util;
 
-import com.jstarczewski.Board.Board;
-import com.jstarczewski.Controller.Controller;
+import com.jstarczewski.board.Board;
+import com.jstarczewski.controller.Controller;
 import com.jstarczewski.inputconsumer.InputConsumer;
 
 import java.io.BufferedReader;

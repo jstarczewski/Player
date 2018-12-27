@@ -1,15 +1,14 @@
-package com.jstarczewski.Board;
+package com.jstarczewski.board;
 
-public class BlackSpot {
+public class Element {
 
     private int x;
     private int y;
 
-    public BlackSpot(int x, int y) {
+    public Element(int x, int y) {
         this.x = x;
         this.y = y;
     }
-
     public int getX() {
         return x;
     }
@@ -24,5 +23,13 @@ public class BlackSpot {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    @Override
+    public String toString() {
+        return "Element{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }
