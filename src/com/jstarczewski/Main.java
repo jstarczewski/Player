@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        InputConsumer inputConsumer = new InputConsumer(new BufferedReader(new InputStreamReader(System.in)), new Board());
+        InputConsumer inputConsumer = new InputConsumer(new BufferedReader(new InputStreamReader(System.in)), new Controller(new Board()));
         inputConsumer.consumeConfigMessage(new BaseCallBack.ConfigCallBack() {
             @Override
             public void notifyArbiter(String callBack) {

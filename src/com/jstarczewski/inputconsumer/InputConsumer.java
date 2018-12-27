@@ -1,6 +1,6 @@
 package com.jstarczewski.inputconsumer;
 
-import com.jstarczewski.Board.Board;
+import com.jstarczewski.Controller;
 import com.jstarczewski.inputconsumer.InputConsumerCallbacks.BaseCallBack;
 import com.jstarczewski.util.Callbacks;
 
@@ -10,42 +10,42 @@ import java.io.IOException;
 public class InputConsumer {
 
 
-    private String config;
     private BufferedReader bufferedReader;
-    private boolean isGameRunning = false;
-    private Board board;
+    private Controller controller;
 
-    public InputConsumer(BufferedReader bufferedReader, Board board) {
+    public InputConsumer(BufferedReader bufferedReader, Controller controller) {
         this.bufferedReader = bufferedReader;
-        this.board = board;
+        this.controller = controller;
     }
 
     public void consumeConfigMessage(BaseCallBack.ConfigCallBack configCallBack) {
         try {
-            config = bufferedReader.readLine();
+            String input = bufferedReader.readLine();
+            if (input == null)
+                configCallBack.notifyArbiter(Callbacks.nullErrorCallback);
+            else {
+                controller.setBoardSize(input);
+                configCallBack.notifyArbiter(Callbacks.successCallback);
+            }
         } catch (IOException e) {
             configCallBack.notifyArbiter(Callbacks.ioErrorCallback + e.getMessage());
         }
-        if (config == null)
-            configCallBack.notifyArbiter(Callbacks.nullErrorCallback);
-        else {
-            board.setHeight(Integer.valueOf(config));
-            board.setLength(Integer.valueOf(config));
-            configCallBack.notifyArbiter(Callbacks.successCallback);
-        }
+
     }
 
     public void consumeBlackSpotsConfiguration(BaseCallBack.BlackSpotsCallBack blackSpotsCallBack) {
         try {
-            config = bufferedReader.readLine();
-            if (config == null)
+            String input = bufferedReader.readLine();
+            if (input == null)
                 blackSpotsCallBack.notifyArbiter(Callbacks.nullErrorCallback);
             else
-                blackSpotsCallBack.notifyArbiter(Callbacks.successCallback);
+                controller.fillBoard(input);
+            blackSpotsCallBack.notifyArbiter(Callbacks.successCallback);
         } catch (IOException e) {
             blackSpotsCallBack.notifyArbiter(Callbacks.ioErrorCallback);
         }
     }
+
 
     private void consumeMove(BaseCallBack.MoveCallBack moveCallBack) {
         try {
@@ -53,35 +53,17 @@ public class InputConsumer {
             if (input == null)
                 moveCallBack.notifyArbiter(Callbacks.nullErrorCallback);
             else
-                moveCallBack.notifyArbiter(response(input));
+                moveCallBack.notifyArbiter(controller.response(input));
         } catch (IOException e) {
             moveCallBack.notifyArbiter(Callbacks.ioErrorCallback);
         }
     }
 
-    private String response(String input) {
-        if (input.toLowerCase().equals("stop")) {
-            isGameRunning = false;
-            closeReader();
-            return Callbacks.gameEndCallBack;
-        } else if (input.toLowerCase().equals("start")) {
-            if (!isGameRunning) {
-                isGameRunning = true;
-                return Callbacks.gameStartCallBack;
-            } else {
-                return Callbacks.gameAlreadyStartedCallBack;
-            }
-        } else {
-            if (isGameRunning)
-                return Callbacks.moveCallBack;
-        }
-        return Callbacks.actionErrorCallBack;
-    }
-
     public void startGame(BaseCallBack.MoveCallBack moveCallBack) {
         do
             consumeMove(moveCallBack);
-        while (isGameRunning);
+        while (controller.isGameRunning());
+        closeReader();
     }
 
     private void closeReader() {
