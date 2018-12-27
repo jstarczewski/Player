@@ -1,7 +1,9 @@
 package com.jstarczewski.inputconsumer;
 
+import com.jstarczewski.inputconsumer.InputConsumerCallbacks.BaseCallBack;
 import com.jstarczewski.inputconsumer.InputConsumerCallbacks.BlocksFilledAtStartupCallback;
 import com.jstarczewski.inputconsumer.InputConsumerCallbacks.ConfigConsumerCallback;
+import com.jstarczewski.util.Callbacks;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,9 +12,11 @@ public class InputConsumer {
 
 
     private String config;
-    private String blocksFilledAtStartupConfiguration;
-    private int boardSize = 0;
     private BufferedReader bufferedReader;
+    private boolean isGameRunning = true;
+
+
+    private BaseCallBack baseCallBack;
 
 
     ConfigConsumerCallback configConsumerCallback;
@@ -22,57 +26,87 @@ public class InputConsumer {
         this.bufferedReader = bufferedReader;
     }
 
-    public void consumeConfigInput(ConfigConsumerCallback configConsumerCallback) {
-        setConfigConsumerCallback(configConsumerCallback);
+    public void consumeConfigMessage(BaseCallBack.ConfigCallBack configCallBack) {
+        setBaseCallBack(configCallBack);
         try {
-            this.config = bufferedReader.readLine();
-            if (this.config != null)
-                consumeConfigMessage(this.config);
-            else {
-                this.configConsumerCallback.onConfigDataNullError("Data error config is null");
+            config = bufferedReader.readLine();
+        } catch (IOException e) {
+            configCallBack.onCall(Callbacks.ioErrorCallback + e.getMessage());
+        }
+        if (config == null)
+            configCallBack.onCall(Callbacks.nullErrorCallback);
+        else
+            configCallBack.onCall(Callbacks.successCallback);
+    }
+
+    public void consumeBlackSpotsConfiguration(BaseCallBack.BlackSpotsCallBack blackSpotsCallBack) {
+        setBaseCallBack(blackSpotsCallBack);
+        try {
+            config = bufferedReader.readLine();
+        } catch (IOException e) {
+            blackSpotsCallBack.onCall(Callbacks.ioErrorCallback);
+        }
+        if (config == null)
+            blackSpotsCallBack.onCall(Callbacks.nullErrorCallback);
+        else
+            blackSpotsCallBack.onCall(Callbacks.successCallback);
+    }
+
+    private void consumeMove(BaseCallBack.MoveCallBack moveCallBack) {
+        try {
+            config = bufferedReader.readLine();
+        } catch (IOException e) {
+            moveCallBack.onCall(Callbacks.ioErrorCallback);
+        }
+        if (config == null)
+            moveCallBack.onCall(Callbacks.nullErrorCallback);
+        else
+            response();
+    }
+
+    private void response() {
+        if (config.equals("stop")) {
+            isGameRunning = false;
+            baseCallBack.onCall(Callbacks.gameEndCallBack);
+        } else if (config.equals("start")) {
+            // wait
+            if (!isGameRunning) {
+                isGameRunning = true;
+                baseCallBack.onCall(Callbacks.gameStartCallBack);
+            } else {
+                baseCallBack.onCall(Callbacks.gameAlreadyStartedCallBack);
             }
-        } catch (IOException e) {
-            this.configConsumerCallback.onConfigExceptionError("Error occured while reading config message: " + e.getLocalizedMessage());
+        } else {
+            // makeMove
+            if (isGameRunning)
+                baseCallBack.onCall(Callbacks.moveCallBack);
         }
-
-        setConfig(config);
-        setConfigConsumerCallback(configConsumerCallback);
-
-
     }
 
-    public void consumeBlocksFilledAtStartupConfigurations(BlocksFilledAtStartupCallback blocksFilledAtStartupCallback) {
-        setBlocksFilledAtStartupCallback(blocksFilledAtStartupCallback);
+    public void startGame(BaseCallBack.MoveCallBack moveCallBack) {
+        setBaseCallBack(moveCallBack);
+        while (isGameRunning) {
+            consumeMove(moveCallBack);
+        }
+    }
+
+    private void makeMove() {
+        baseCallBack.onCall(Callbacks.successCallback);
+    }
+
+    private void makeMove(String block) {
+    }
+
+    public void setBaseCallBack(BaseCallBack baseCallBack) {
+        this.baseCallBack = baseCallBack;
+    }
+
+    public void closeReader() {
         try {
-            blocksFilledAtStartupConfiguration = bufferedReader.readLine();
+            bufferedReader.close();
         } catch (IOException e) {
-            blocksFilledAtStartupCallback.onBlocksFilledAtStartupExceptionError("IO error occured" + e.getMessage());
-        }
-
-    }
-
-    private void formatBlocksFilledAtStartupConfiguration(String blocksFilledAtStartupConfiguration) {
-
-    }
-
-    private void consumeConfigMessage(String config) {
-        try {
-            boardSize = Integer.valueOf(config);
-            configConsumerCallback.onConfigConsumed("Size of the board is " + boardSize);
-        } catch (NumberFormatException e) {
-            configConsumerCallback.onConfigDataFormatError("Error consuming data occured " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    private void setConfigConsumerCallback(ConfigConsumerCallback configConsumerCallback) {
-        this.configConsumerCallback = configConsumerCallback;
-    }
-
-    public void setBlocksFilledAtStartupCallback(BlocksFilledAtStartupCallback blocksFilledAtStartupCallback) {
-        this.blocksFilledAtStartupCallback = blocksFilledAtStartupCallback;
-    }
-
-    private void setConfig(String config) {
-        this.config = config;
-    }
 }

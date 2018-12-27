@@ -8,7 +8,7 @@ public class InputDataParser {
 
     public ArrayList<BlackSpot> parseBlackSpotInputData(String blackSpotDataConfiguration) {
         ArrayList<BlackSpot> blackSpots = new ArrayList<BlackSpot>();
-
+        return blackSpots;
     }
 
 }
