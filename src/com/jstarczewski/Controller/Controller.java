@@ -1,13 +1,16 @@
-package com.jstarczewski;
+package com.jstarczewski.Controller;
 
 import com.jstarczewski.Board.Board;
-import com.jstarczewski.inputconsumer.InputConsumerCallbacks.BaseCallBack;
-import com.jstarczewski.util.Callbacks;
+import com.jstarczewski.util.CallBackMessages;
+
+
+/**
+ * Controller class is responsible for 'controlling' what is going on based on input received from InputConsumer
+ * */
 
 public class Controller {
 
     private Board board;
-
 
     private boolean isGameRunning = false;
 
@@ -15,12 +18,12 @@ public class Controller {
         this.board = board;
     }
 
-    public void setBoardSize(String size) {
-
+    public String setBoardSize(String size) {
+       return CallBackMessages.successCallback;
     }
 
-    public void fillBoard(String config) {
-
+    public String fillBoard(String config) {
+        return CallBackMessages.successCallback;
     }
 
     private String makeMove() {
@@ -31,19 +34,19 @@ public class Controller {
     public String response(String input) {
         if (input.toLowerCase().equals("stop")) {
             isGameRunning = false;
-            return Callbacks.gameEndCallBack;
+            return CallBackMessages.gameEndCallBack;
         } else if (input.toLowerCase().equals("start")) {
             if (!isGameRunning) {
                 isGameRunning = true;
                 return makeMove();
             } else {
-                return Callbacks.gameAlreadyStartedCallBack;
+                return CallBackMessages.gameAlreadyStartedCallBack;
             }
         } else {
             if (isGameRunning)
                 return makeMove();
         }
-        return Callbacks.actionErrorCallBack;
+        return CallBackMessages.actionErrorCallBack;
     }
 
     public boolean isGameRunning() {

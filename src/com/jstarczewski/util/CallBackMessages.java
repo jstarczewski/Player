@@ -1,6 +1,11 @@
 package com.jstarczewski.util;
 
-public class Callbacks {
+public class CallBackMessages {
+
+
+    /**
+     * Simple class that contains CallBacks messages so we easily avoid hardcoding String in code.
+     * */
 
     public static final String successCallback = "ok";
     public static final String numberFormatErrorCallback = "Number format error occurred : ";
