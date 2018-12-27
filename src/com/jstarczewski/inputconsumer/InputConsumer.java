@@ -1,8 +1,7 @@
 package com.jstarczewski.inputconsumer;
 
+import com.jstarczewski.Board.Board;
 import com.jstarczewski.inputconsumer.InputConsumerCallbacks.BaseCallBack;
-import com.jstarczewski.inputconsumer.InputConsumerCallbacks.BlocksFilledAtStartupCallback;
-import com.jstarczewski.inputconsumer.InputConsumerCallbacks.ConfigConsumerCallback;
 import com.jstarczewski.util.Callbacks;
 
 import java.io.BufferedReader;
@@ -13,95 +12,79 @@ public class InputConsumer {
 
     private String config;
     private BufferedReader bufferedReader;
-    private boolean isGameRunning = true;
+    private boolean isGameRunning = false;
+    private Board board;
 
-
-    private BaseCallBack baseCallBack;
-
-
-    ConfigConsumerCallback configConsumerCallback;
-    BlocksFilledAtStartupCallback blocksFilledAtStartupCallback;
-
-    public InputConsumer(BufferedReader bufferedReader) {
+    public InputConsumer(BufferedReader bufferedReader, Board board) {
         this.bufferedReader = bufferedReader;
+        this.board = board;
     }
 
     public void consumeConfigMessage(BaseCallBack.ConfigCallBack configCallBack) {
-        setBaseCallBack(configCallBack);
         try {
             config = bufferedReader.readLine();
         } catch (IOException e) {
-            configCallBack.onCall(Callbacks.ioErrorCallback + e.getMessage());
+            configCallBack.notifyArbiter(Callbacks.ioErrorCallback + e.getMessage());
         }
         if (config == null)
-            configCallBack.onCall(Callbacks.nullErrorCallback);
-        else
-            configCallBack.onCall(Callbacks.successCallback);
+            configCallBack.notifyArbiter(Callbacks.nullErrorCallback);
+        else {
+            board.setHeight(Integer.valueOf(config));
+            board.setLength(Integer.valueOf(config));
+            configCallBack.notifyArbiter(Callbacks.successCallback);
+        }
     }
 
     public void consumeBlackSpotsConfiguration(BaseCallBack.BlackSpotsCallBack blackSpotsCallBack) {
-        setBaseCallBack(blackSpotsCallBack);
         try {
             config = bufferedReader.readLine();
+            if (config == null)
+                blackSpotsCallBack.notifyArbiter(Callbacks.nullErrorCallback);
+            else
+                blackSpotsCallBack.notifyArbiter(Callbacks.successCallback);
         } catch (IOException e) {
-            blackSpotsCallBack.onCall(Callbacks.ioErrorCallback);
+            blackSpotsCallBack.notifyArbiter(Callbacks.ioErrorCallback);
         }
-        if (config == null)
-            blackSpotsCallBack.onCall(Callbacks.nullErrorCallback);
-        else
-            blackSpotsCallBack.onCall(Callbacks.successCallback);
     }
 
     private void consumeMove(BaseCallBack.MoveCallBack moveCallBack) {
         try {
-            config = bufferedReader.readLine();
+            String input = bufferedReader.readLine();
+            if (input == null)
+                moveCallBack.notifyArbiter(Callbacks.nullErrorCallback);
+            else
+                moveCallBack.notifyArbiter(response(input));
         } catch (IOException e) {
-            moveCallBack.onCall(Callbacks.ioErrorCallback);
+            moveCallBack.notifyArbiter(Callbacks.ioErrorCallback);
         }
-        if (config == null)
-            moveCallBack.onCall(Callbacks.nullErrorCallback);
-        else
-            response();
     }
 
-    private void response() {
-        if (config.equals("stop")) {
+    private String response(String input) {
+        if (input.toLowerCase().equals("stop")) {
             isGameRunning = false;
-            baseCallBack.onCall(Callbacks.gameEndCallBack);
-        } else if (config.equals("start")) {
-            // wait
+            closeReader();
+            return Callbacks.gameEndCallBack;
+        } else if (input.toLowerCase().equals("start")) {
             if (!isGameRunning) {
                 isGameRunning = true;
-                baseCallBack.onCall(Callbacks.gameStartCallBack);
+                return Callbacks.gameStartCallBack;
             } else {
-                baseCallBack.onCall(Callbacks.gameAlreadyStartedCallBack);
+                return Callbacks.gameAlreadyStartedCallBack;
             }
         } else {
-            // makeMove
             if (isGameRunning)
-                baseCallBack.onCall(Callbacks.moveCallBack);
+                return Callbacks.moveCallBack;
         }
+        return Callbacks.actionErrorCallBack;
     }
 
     public void startGame(BaseCallBack.MoveCallBack moveCallBack) {
-        setBaseCallBack(moveCallBack);
-        while (isGameRunning) {
+        do
             consumeMove(moveCallBack);
-        }
+        while (isGameRunning);
     }
 
-    private void makeMove() {
-        baseCallBack.onCall(Callbacks.successCallback);
-    }
-
-    private void makeMove(String block) {
-    }
-
-    public void setBaseCallBack(BaseCallBack baseCallBack) {
-        this.baseCallBack = baseCallBack;
-    }
-
-    public void closeReader() {
+    private void closeReader() {
         try {
             bufferedReader.close();
         } catch (IOException e) {
