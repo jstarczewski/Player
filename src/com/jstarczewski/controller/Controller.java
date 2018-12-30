@@ -1,8 +1,12 @@
 package com.jstarczewski.controller;
 
 import com.jstarczewski.board.Board;
+import com.jstarczewski.board.Element;
+import com.jstarczewski.logic.Logic;
 import com.jstarczewski.util.CallBackMessages;
 import com.jstarczewski.util.InputDataParser;
+
+import java.util.ArrayList;
 
 
 /**
@@ -12,11 +16,16 @@ import com.jstarczewski.util.InputDataParser;
 public class Controller {
 
     private Board board;
+    private int playerIndex = 2;
+    private int moveIndex = 0;
+    private Logic logic;
 
     private boolean isGameRunning = false;
 
-    public Controller(Board board) {
+    public Controller(Board board, Logic logic) {
         this.board = board;
+        this.logic = logic;
+        logic.setBoard(board);
     }
 
     public String setBoardSize(String size) {
@@ -25,11 +34,20 @@ public class Controller {
     }
 
     public String fillBoard(String config) {
-        board.fillBoardWithBlackSpots(InputDataParser.parseBlackSpotInputData(config));
+        board.fillBoard(-1, InputDataParser.parseInputData(config));
         return CallBackMessages.successCallback;
     }
 
-    private String makeMove() {
+    private String makeStartMove() {
+        playerIndex--;
+        board.fillBoard(++moveIndex, mockTestElementList());
+        return board.toString();
+    }
+
+    private String makeMove(String moveData) {
+        board.fillBoard(++moveIndex, InputDataParser.parseInputData(moveData));
+        //algorithms response
+        board.fillBoard(++moveIndex, mockTestElementList());
         return board.toString();
     }
 
@@ -41,18 +59,26 @@ public class Controller {
         } else if (input.toLowerCase().equals("start")) {
             if (!isGameRunning) {
                 isGameRunning = true;
-                return makeMove();
+                return makeStartMove();
             } else {
                 return CallBackMessages.gameAlreadyStartedCallBack;
             }
         } else {
-            if (isGameRunning)
-                return makeMove();
+            isGameRunning = true;
+            return makeMove(input);
         }
-        return CallBackMessages.actionErrorCallBack;
     }
 
     public boolean isGameRunning() {
         return isGameRunning;
+    }
+
+    private ArrayList<Element> mockTestElementList() {
+        Element e = new Element(2, 4);
+        Element e2 = new Element(2, 5);
+        ArrayList<Element> elements = new ArrayList<Element>();
+        elements.add(e);
+        elements.add(e2);
+        return elements;
     }
 }

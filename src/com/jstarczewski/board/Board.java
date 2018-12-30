@@ -17,11 +17,6 @@ public class Board {
                 board[i][j] = 0;
     }
 
-    public void fillBoardWithBlackSpots(ArrayList<Element> blackSpots) {
-        for (Element element : blackSpots)
-            board[element.getX()][element.getY()] = -1;
-    }
-
     public int getSize() {
         return size;
     }
@@ -40,5 +35,12 @@ public class Board {
             stringBuilder.append("\n");
         }
         return stringBuilder.toString();
+    }
+
+    public boolean fillBoard(int value, ArrayList<Element> coordinates) {
+        for (Element element : coordinates) {
+            board[element.getX()][element.getY()] = value;
+        }
+        return true;
     }
 }
