@@ -1,12 +1,19 @@
 package com.jstarczewski;
 
+import com.jstarczewski.board.Board;
 import com.jstarczewski.inputconsumer.InputConsumer;
 import com.jstarczewski.inputconsumer.BaseCallBack;
+import com.jstarczewski.logic.Logic;
 import com.jstarczewski.util.Injection;
 
 public class Main {
 
     public static void main(String[] args) {
+
+
+        Board board = new Board();
+        board.setBoardSize(3);
+        Logic.testPrintBlocks(Logic.testSearchBoard(board));
 
         /**
          * Input consumer object responsible with communicating with Arbiter

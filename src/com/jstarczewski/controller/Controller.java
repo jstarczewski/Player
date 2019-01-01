@@ -40,14 +40,20 @@ public class Controller {
 
     private String makeStartMove() {
         playerIndex--;
+        // mock test element
         board.fillBoard(++moveIndex, mockTestElementList());
         return board.toString();
     }
 
     private String makeMove(String moveData) {
+
+        /*
         board.fillBoard(++moveIndex, InputDataParser.parseInputData(moveData));
         //algorithms response
         board.fillBoard(++moveIndex, mockTestElementList());
+        */
+        logic.makeMove(++moveIndex, InputDataParser.parseInputData(moveData));
+
         return board.toString();
     }
 

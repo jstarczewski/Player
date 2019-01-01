@@ -43,4 +43,8 @@ public class Board {
         }
         return true;
     }
+
+    public boolean isEmpty(int i, int j, int k, int l) {
+        return board[i][j] == 0 && board[k][l] == 0;
+    }
 }
