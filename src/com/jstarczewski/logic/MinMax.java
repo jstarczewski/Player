@@ -3,10 +3,7 @@ package com.jstarczewski.logic;
 import com.jstarczewski.board.Board;
 import com.jstarczewski.board.Element;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class MinMax {
 
@@ -42,7 +39,7 @@ public class MinMax {
 
     }
 
-    private boolean isSpace(Board board) {
+    boolean isSpace(Board board) {
 
         int ai, aj;
         for (int i = 0; i < board.getSize(); i++) {
@@ -136,9 +133,13 @@ public class MinMax {
                 checkWin(child);
             }
         });
-        Node bestChild = findBestChild(isEvenPlayer, children);
-        node.setBoard(bestChild.getBoard());
-        node.setScore(bestChild.getScore()-1);
+        if (children.isEmpty()) {
+            System.out.println("Wygrałeś z komputerem");
+        } else {
+            Node bestChild = findBestChild(isEvenPlayer, children);
+            node.setBoard(bestChild.getBoard());
+            node.setScore(bestChild.getScore() - 1);
+        }
     }
 
     private Node findBestChild(boolean isEvenPlayer, List<Node> children) {
@@ -146,6 +147,7 @@ public class MinMax {
         return children.stream()
                 .max(isEvenPlayer ? byNumberComparator : byNumberComparator.reversed())
                 .orElseThrow(NoSuchElementException::new);
+
     }
 
     public Tree getTree() {

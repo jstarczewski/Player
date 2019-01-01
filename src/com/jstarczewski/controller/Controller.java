@@ -55,7 +55,8 @@ public class Controller {
         //algorithms response
         board.fillBoard(++moveIndex, mockTestElementList());
         */
-        logic.makeMove(InputDataParser.parseInputData(moveData));
+        if(!logic.makeMove(InputDataParser.parseInputData(moveData)))
+            isGameRunning = false;
 
         return board.toString();
     }

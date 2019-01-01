@@ -23,11 +23,15 @@ public class Logic {
     }
 
 
-    public void makeMove(ArrayList<Element> elements) {
+    public boolean makeMove(ArrayList<Element> elements) {
         board.fillBoard(elements);
         minMax.constructTree(board);
         board.fillBoard(minMax.getWinningCord(board.getMoveIndex()+1));
-        System.out.println(board.toString());
+        if (!minMax.isSpace(board)) {
+            System.out.println("Koniec gry");
+            return false;
+        }
+        return true;
     }
 
 
