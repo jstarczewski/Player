@@ -1,10 +1,8 @@
 package com.jstarczewski.logic;
 
-import com.jstarczewski.board.Block;
 import com.jstarczewski.board.Board;
 import com.jstarczewski.board.Element;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Logic {
@@ -27,8 +25,9 @@ public class Logic {
 
     public void makeMove(ArrayList<Element> elements) {
         board.fillBoard(elements);
-
-
+        minMax.constructTree(board);
+        board.fillBoard(minMax.getWinningCord(board.getMoveIndex()+1));
+        System.out.println(board.toString());
     }
 
 

@@ -7,7 +7,6 @@ public class Board {
 
     private int[][] board;
 
-
     private int moveIndex;
 
     private int size;
@@ -48,6 +47,7 @@ public class Board {
         for (Element element : coordinates) {
             board[element.getX()][element.getY()] = moveIndex;
         }
+        moveIndex++;
         return true;
     }
 
@@ -76,7 +76,15 @@ public class Board {
             for (int i = 0; i < size; i++)
                 for (int j = 0; j < size; j++)
                     this.board[i][j] = board.getFieldValue(i, j);
-
         }
+    }
+
+    public ArrayList<Element> find(int moveIndex) {
+        ArrayList<Element> elements = new ArrayList<>();
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++)
+                if (board[i][j] == moveIndex)
+                    elements.add(new Element(i, j));
+        return elements;
     }
 }

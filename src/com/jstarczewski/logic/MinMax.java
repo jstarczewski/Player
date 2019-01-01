@@ -1,6 +1,7 @@
 package com.jstarczewski.logic;
 
 import com.jstarczewski.board.Board;
+import com.jstarczewski.board.Element;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -32,8 +33,11 @@ public class MinMax {
         });
     }
 
-    public void makeMove(int moveIndex, Board board) {
-        getAllPossibleBlockPositions(board);
+    public void makeMove(Board board) {
+        for (Board b : getAllPossibleBlockPositions(board)) {
+            System.out.println(b.toString());
+            System.out.println("\n\n");
+        }
 
 
     }
@@ -44,8 +48,8 @@ public class MinMax {
         for (int i = 0; i < board.getSize(); i++) {
 
             for (int j = 0; j < board.getSize(); j++) {
-                ai = i;
-                aj = j;
+                ai = i - 1;
+                aj = j - 1;
                 if (i == 0)
                     ai = board.getSize() - 1;
                 if (j == 0)
@@ -72,18 +76,17 @@ public class MinMax {
         for (int i = 0; i < board.getSize(); i++) {
 
             for (int j = 0; j < board.getSize(); j++) {
-                ai = i;
-                aj = j;
+                ai = i - 1;
+                aj = j - 1;
                 if (i == 0)
                     ai = board.getSize() - 1;
                 if (j == 0)
                     aj = board.getSize() - 1;
                 if (board.isEmpty(i, j, ai, j)) {
                     Board tempBoard = new Board();
-                    tempBoard.setMoveIndex(board.getMoveIndex());
+                    tempBoard.setMoveIndex(board.getMoveIndex() + 1);
                     tempBoard.setBoardSize(board.getSize());
                     tempBoard.copy(board);
-
                     tempBoard.fillField(i, j, board.getMoveIndex() + 1);
                     tempBoard.fillField(ai, j, board.getMoveIndex() + 1);
                     boards.add(tempBoard);
@@ -92,12 +95,13 @@ public class MinMax {
 
                 if (board.isEmpty(i, j, i, aj)) {
                     Board tempBoard = new Board();
-                    tempBoard.setMoveIndex(board.getMoveIndex());
+                    tempBoard.setMoveIndex(board.getMoveIndex() + 1);
                     tempBoard.setBoardSize(board.getSize());
                     tempBoard.copy(board);
-
+                    int a = 0;
                     tempBoard.fillField(i, j, board.getMoveIndex() + 1);
                     tempBoard.fillField(i, aj, board.getMoveIndex() + 1);
+                    boards.add(tempBoard);
                 }
                 //     blocks.add(new Block((new Element(i, j)), (new Element(i, aj))));
 
@@ -112,24 +116,40 @@ public class MinMax {
         return root.getScore() % 2 == 0;
     }
 
+    public ArrayList<Element> getWinningCord(int moveIndex) {
+        ArrayList<Element> elements = new ArrayList<>();
+        Node root = tree.getRoot();
+        checkWin(root);
+        if (root.getScore() % 2 == 0) {
+            elements.addAll(root.getBoard().find(moveIndex));
+        }
+        return elements;
+    }
+
     private void checkWin(Node node) {
         List<Node> children = node.getChildren();
         boolean isEvenPlayer = node.isEvenPlayer();
         children.forEach(child -> {
-            if(!isSpace(child.getBoard())) {
+            if (!isSpace(child.getBoard())) {
                 child.setScore(child.getBoard().getMoveIndex());
             } else {
                 checkWin(child);
             }
         });
         Node bestChild = findBestChild(isEvenPlayer, children);
-        node.setScore(bestChild.getScore());
+        node.setBoard(bestChild.getBoard());
+        node.setScore(bestChild.getScore()-1);
     }
+
     private Node findBestChild(boolean isEvenPlayer, List<Node> children) {
         Comparator<Node> byNumberComparator = Comparator.comparing(Node::getScore);
         return children.stream()
                 .max(isEvenPlayer ? byNumberComparator : byNumberComparator.reversed())
                 .orElseThrow(NoSuchElementException::new);
+    }
+
+    public Tree getTree() {
+        return tree;
     }
 
 }

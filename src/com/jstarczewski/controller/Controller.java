@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Controller {
 
     private Board board;
-    private int playerIndex = 2;
+    private Boolean isPlayerEven = true;
     private int moveIndex = 0;
     private Logic logic;
 
@@ -36,11 +36,12 @@ public class Controller {
     public String fillBoard(String config) {
         board.setMoveIndex(-1);
         board.fillBoard(InputDataParser.parseInputData(config));
+        board.setMoveIndex(1);
         return CallBackMessages.successCallback;
     }
 
     private String makeStartMove() {
-        playerIndex--;
+        isPlayerEven = false;
         // mock test element
         board.setMoveIndex(++moveIndex);
         board.fillBoard(mockTestElementList());
@@ -54,7 +55,6 @@ public class Controller {
         //algorithms response
         board.fillBoard(++moveIndex, mockTestElementList());
         */
-        board.setMoveIndex(++moveIndex);
         logic.makeMove(InputDataParser.parseInputData(moveData));
 
         return board.toString();
