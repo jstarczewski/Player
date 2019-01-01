@@ -1,25 +1,25 @@
 package com.jstarczewski.logic;
 
-import com.jstarczewski.board.Block;
 import com.jstarczewski.board.Board;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Node {
 
-    private Block block;
     private boolean isEvenPlayer;
     private Board board;
+    private int score;
     private List<Node> children;
 
-
-
-    public Block getBlock() {
-        return block;
+    Node(Board board, boolean isEvenPlayer) {
+        this.board = board;
+        this.isEvenPlayer = isEvenPlayer;
+        children = new ArrayList<>();
     }
 
-    public void setBlock(Block block) {
-        this.block = block;
+    public void addChild(Node node) {
+        children.add(node);
     }
 
     public boolean isEvenPlayer() {
@@ -44,5 +44,13 @@ class Node {
 
     public void setChildren(List<Node> children) {
         this.children = children;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

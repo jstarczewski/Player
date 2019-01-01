@@ -7,6 +7,9 @@ public class Board {
 
     private int[][] board;
 
+
+    private int moveIndex;
+
     private int size;
 
     public void setBoardSize(int size) {
@@ -37,14 +40,43 @@ public class Board {
         return stringBuilder.toString();
     }
 
-    public boolean fillBoard(int value, ArrayList<Element> coordinates) {
+    public void fillField(int i, int j, int value) {
+        board[i][j] = value;
+    }
+
+    public boolean fillBoard(ArrayList<Element> coordinates) {
         for (Element element : coordinates) {
-            board[element.getX()][element.getY()] = value;
+            board[element.getX()][element.getY()] = moveIndex;
         }
         return true;
     }
 
     public boolean isEmpty(int i, int j, int k, int l) {
         return board[i][j] == 0 && board[k][l] == 0;
+    }
+
+    public int getFieldValue(int i, int j) {
+        return board[i][j];
+    }
+
+    public void setFieldValue(int i, int j, int value) {
+        board[i][j] = value;
+    }
+
+    public int getMoveIndex() {
+        return moveIndex;
+    }
+
+    public void setMoveIndex(int moveIndex) {
+        this.moveIndex = moveIndex;
+    }
+
+    public void copy(Board board) {
+        if (board.size == size) {
+            for (int i = 0; i < size; i++)
+                for (int j = 0; j < size; j++)
+                    this.board[i][j] = board.getFieldValue(i, j);
+
+        }
     }
 }

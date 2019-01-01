@@ -34,14 +34,16 @@ public class Controller {
     }
 
     public String fillBoard(String config) {
-        board.fillBoard(-1, InputDataParser.parseInputData(config));
+        board.setMoveIndex(-1);
+        board.fillBoard(InputDataParser.parseInputData(config));
         return CallBackMessages.successCallback;
     }
 
     private String makeStartMove() {
         playerIndex--;
         // mock test element
-        board.fillBoard(++moveIndex, mockTestElementList());
+        board.setMoveIndex(++moveIndex);
+        board.fillBoard(mockTestElementList());
         return board.toString();
     }
 
@@ -52,7 +54,8 @@ public class Controller {
         //algorithms response
         board.fillBoard(++moveIndex, mockTestElementList());
         */
-        logic.makeMove(++moveIndex, InputDataParser.parseInputData(moveData));
+        board.setMoveIndex(++moveIndex);
+        logic.makeMove(InputDataParser.parseInputData(moveData));
 
         return board.toString();
     }
