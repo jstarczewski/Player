@@ -6,24 +6,24 @@ import com.jstarczewski.util.CallBackMessages;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class InputConsumer {
+public class GameInputConsumer {
 
     private BufferedReader bufferedReader;
     private Controller controller;
-    private static InputConsumer INSTANCE = null;
+    private static GameInputConsumer INSTANCE = null;
 
     /**
      * Input is a Singleton, because we always want only one object to be working with BufferedReader, so less NullPointerExceptions
      * will happen, because there wont be a situation when two object having two BufferedReaders will access same data.
      * <p>
-     * InputConsumer is responsible for consuming data from System.in, passing it to controller and then sending CallBack message
+     * GameInputConsumer is responsible for consuming data from System.in, passing it to controller and then sending CallBack message
      * to our Main class
      */
 
     // Simple Singleton
-    public static synchronized InputConsumer getInstance(BufferedReader bufferedReader, Controller controller) {
+    public static synchronized GameInputConsumer getInstance(BufferedReader bufferedReader, Controller controller) {
         if (INSTANCE == null)
-            INSTANCE = new InputConsumer(bufferedReader, controller);
+            INSTANCE = new GameInputConsumer(bufferedReader, controller);
         return INSTANCE;
     }
 
@@ -98,7 +98,7 @@ public class InputConsumer {
         }
     }
 
-    private InputConsumer(BufferedReader bufferedReader, Controller controller) {
+    private GameInputConsumer(BufferedReader bufferedReader, Controller controller) {
         this.bufferedReader = bufferedReader;
         this.controller = controller;
     }

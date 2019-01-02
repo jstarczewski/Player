@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 
 /**
- * controller class is responsible for 'controlling' what is going on based on input received from InputConsumer
+ * controller class is responsible for 'controlling' what is going on based on input received from GameInputConsumer
  */
 
 public class Controller {
@@ -45,8 +45,12 @@ public class Controller {
     private String makeMove(String moveData) {
         board.fillBoard(DataParser.parseInputData(moveData));
         ArrayList<Element> optimalMoveData = logic.getOptimalMoveData(board);
-        board.fillBoard(optimalMoveData);
-        return DataParser.parseOutputData(optimalMoveData);
+        if (optimalMoveData.isEmpty()) {
+            return CallBackMessages.noMoveErrorCallBack;
+        } else {
+            board.fillBoard(optimalMoveData);
+            return DataParser.parseOutputData(optimalMoveData);
+        }
     }
 
 

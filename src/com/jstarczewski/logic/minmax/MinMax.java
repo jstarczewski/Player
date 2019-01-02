@@ -9,54 +9,24 @@ import java.util.*;
 public class MinMax implements Algorithm {
 
     private Tree tree;
+    private boolean isPlayerEven = true;
 
-    public void constructTree(Board board) {
-        tree = new Tree();
-        Node root = new Node(board, true);
-        tree.setRoot(root);
-        constructTree(root);
-    }
-
-    private void constructTree(Node node) {
-        List<Board> listOfBoardsOfPossibleMoves = getAllPossibleBlockPositions(node.getBoard());
-        boolean isEvenPlayer = !node.isEvenPlayer();
-        listOfBoardsOfPossibleMoves.forEach(n -> {
-
-            Node newNode = new Node(n, isEvenPlayer);
-            node.addChild(newNode);
-            if (isSpace(newNode.getBoard())) {
-                constructTree(newNode);
-            }
-
-        });
-    }
 
     private boolean isSpace(Board board) {
-
         int ai, aj;
         for (int i = 0; i < board.getSize(); i++) {
-
             for (int j = 0; j < board.getSize(); j++) {
-                ai = i - 1;
-                aj = j - 1;
-                if (i == 0)
-                    ai = board.getSize() - 1;
-                if (j == 0)
-                    aj = board.getSize() - 1;
+                ai = (i == 0) ? board.getSize() - 1 : i - 1;
+                aj = (j == 0) ? board.getSize() - 1 : j - 1;
                 if (board.isEmpty(i, j, ai, j)) {
                     return true;
                 }
-                //blocks.add(new Block((new Element(i, j)), (new Elemeont(ai, j))));
-
                 if (board.isEmpty(i, j, i, aj)) {
                     return true;
                 }
-                //     blocks.add(new Block((new Element(i, j)), (new Element(i, aj))));
-
             }
         }
         return false;
-
     }
 
     @Override
@@ -65,9 +35,10 @@ public class MinMax implements Algorithm {
 
         for (int i = 0; i < board.getSize(); i++) {
             for (int j = 0; j < board.getSize(); j++) {
-                if (board.isEmpty(i, j, i + 1, j + 1)) {
+                if (board.isEmpty(i, j, i, j + 1)) {
                     elements.add(new Element(i, j));
-                    elements.add(new Element(i + 1, j + 1));
+                    elements.add(new Element(i, j + 1));
+                    return elements;
                 }
             }
         }
@@ -79,89 +50,93 @@ public class MinMax implements Algorithm {
         ArrayList<Board> boards = new ArrayList<>();
         int ai, aj;
         for (int i = 0; i < board.getSize(); i++) {
-
             for (int j = 0; j < board.getSize(); j++) {
-                ai = i - 1;
-                aj = j - 1;
-                if (i == 0)
-                    ai = board.getSize() - 1;
-                if (j == 0)
-                    aj = board.getSize() - 1;
+                ai = i == 0 ? board.getSize() - 1 : i - 1;
+                aj = j == 0 ? board.getSize() - 1 : j - 1;
                 if (board.isEmpty(i, j, ai, j)) {
-                    Board tempBoard = new Board();
-                    tempBoard.setMoveIndex(board.getMoveIndex() + 1);
-                    tempBoard.setBoardSize(board.getSize());
-                    tempBoard.copy(board);
-                    tempBoard.fillField(i, j, board.getMoveIndex() + 1);
-                    tempBoard.fillField(ai, j, board.getMoveIndex() + 1);
-                    boards.add(tempBoard);
+                    boards.add(new Board(board, i, j, ai, j));
                 }
-                //blocks.add(new Block((new Element(i, j)), (new Elemeont(ai, j))));
-
                 if (board.isEmpty(i, j, i, aj)) {
-                    Board tempBoard = new Board();
-                    tempBoard.setMoveIndex(board.getMoveIndex() + 1);
-                    tempBoard.setBoardSize(board.getSize());
-                    tempBoard.copy(board);
-                    int a = 0;
-                    tempBoard.fillField(i, j, board.getMoveIndex() + 1);
-                    tempBoard.fillField(i, aj, board.getMoveIndex() + 1);
-                    boards.add(tempBoard);
+                    boards.add(new Board(board, i, j, i, aj));
                 }
-                //     blocks.add(new Block((new Element(i, j)), (new Element(i, aj))));
-
             }
         }
         return boards;
     }
 
-    public boolean checkWin() {
-        Node root = tree.getRoot();
-        checkWin(root);
-        return root.getScore() % 2 == 0;
+
+    private void constructTree(Board board) {
+        this.tree = new Tree();
+        Node root = new Node(board);
+        tree.setRoot(root);
+        constructTree(root);
     }
 
+
+    private void constructTree(Node node) {
+        List<Board> listOfBoardsOfPossibleMoves = getAllPossibleBlockPositions(node.getBoard());
+        listOfBoardsOfPossibleMoves.forEach(n -> {
+            Node newNode = new Node(n);
+            node.addChild(newNode);
+            if (isSpace(newNode.getBoard())) {
+                constructTree(newNode);
+            }
+
+        });
+    }
+
+
     public ArrayList<Element> getOptimalMoveData(Board board) {
-        constructTree(board);
+        //constructTree(board);
         ArrayList<Element> elements = new ArrayList<>();
-        Node root = tree.getRoot();
-        checkWin(root);
-        if (root.getScore() % 2 == 0) {
-            elements.addAll(root.getBoard().find(board.getMoveIndex() + 1));
-        }
+        Node root = new Node(board);
+        constructTree(root);
+        findWinningBranch(root);
+        elements.addAll((root.getBoard()).find(board.getMoveIndex() - 1));
         return elements;
     }
 
 
-    private void checkWin(Node node) {
+    private void findWinningBranch(Node node) {
         List<Node> children = node.getChildren();
-        boolean isEvenPlayer = node.isEvenPlayer();
         children.forEach(child -> {
             if (!isSpace(child.getBoard())) {
                 child.setScore(child.getBoard().getMoveIndex());
             } else {
-                checkWin(child);
+                findWinningBranch(child);
             }
         });
-        if (children.isEmpty()) {
-            System.out.println("Wygrałeś z komputerem");
-        } else {
-            Node bestChild = findBestChild(isEvenPlayer, children);
-            node.setBoard(bestChild.getBoard());
-            node.setScore(bestChild.getScore() - 1);
-        }
+        Node bestChild = findBestChild(children);
+        node.setBoard(bestChild.getBoard());
+        node.setScore(bestChild.getScore() - 1);
     }
 
-    private Node findBestChild(boolean isEvenPlayer, List<Node> children) {
+    private Node findBestChild(List<Node> children) {
+        /*
+        Comparator<Node> scoreComparator = Comparator.comparing(Node::getScore).reversed();
+        children.sort(scoreComparator);
+        for (Node node : children) {
+            if (isPlayerEven && (node.getScore() % 2 == 0)) {
+                return node;
+            }
+            if (!isPlayerEven && (node.getScore() % 2 != 0)) {
+                return node;
+            }
+        }
+        return currentNode;
+*/
         Comparator<Node> byNumberComparator = Comparator.comparing(Node::getScore);
         return children.stream()
-                .max(isEvenPlayer ? byNumberComparator : byNumberComparator.reversed())
+                .max(isPlayerEven ? byNumberComparator.reversed() : byNumberComparator)
                 .orElseThrow(NoSuchElementException::new);
-
     }
 
     public Tree getTree() {
         return tree;
     }
 
+    @Override
+    public void setPlayerEven(boolean playerEven) {
+        isPlayerEven = playerEven;
+    }
 }

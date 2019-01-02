@@ -16,4 +16,5 @@ public class CallBackMessages {
     public static final String moveCallBack = "moveMade";
     public static final String gameAlreadyStartedCallBack = "Game already started";
     public static final String actionErrorCallBack = "Invalid input detected";
+    public static final String noMoveErrorCallBack = "Algorithm could not find optimal move";
 }

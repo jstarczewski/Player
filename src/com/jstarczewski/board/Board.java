@@ -6,10 +6,27 @@ public class Board {
 
 
     private int[][] board;
-
     private int moveIndex;
-
     private int size;
+
+
+    public Board() {
+    }
+
+    public Board(Board initBoard, int i, int j, int ai, int aj) {
+        this.size = initBoard.getSize();
+        this.board = new int[size][size];
+        this.moveIndex = initBoard.getMoveIndex();
+        copy(initBoard);
+        fillField(i, j, ai, aj);
+    }
+
+    public Board(int initBoard[][], int moveIndex, int i, int j, int ai, int aj) {
+        this.size = initBoard[0].length;
+        this.board = initBoard;
+        this.moveIndex = moveIndex;
+        fillField(i, j, ai, aj);
+    }
 
     public void setBoardSize(int size) {
         this.size = size;
@@ -37,6 +54,12 @@ public class Board {
             stringBuilder.append("\n");
         }
         return stringBuilder.toString();
+    }
+
+    private void fillField(int i, int j, int ai, int aj) {
+        board[i][j] = moveIndex;
+        board[ai][aj] = moveIndex;
+        moveIndex++;
     }
 
     public void fillField(int i, int j, int value) {

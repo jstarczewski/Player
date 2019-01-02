@@ -11,5 +11,6 @@ public interface Algorithm {
 
     ArrayList<Element> getStartMoveData(Board board);
 
+    void setPlayerEven(boolean isPlayerEven);
 
 }

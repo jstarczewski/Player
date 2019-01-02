@@ -20,15 +20,13 @@ public class Logic {
     }
 
     public ArrayList<Element> getStartMoveData(Board board) {
+        minMax.setPlayerEven(isPlayerEven);
         return minMax.getStartMoveData(board);
     }
 
-    public boolean isPlayerEven() {
-        return isPlayerEven;
+    public void setPlayerEven(boolean isPlayerEven) {
+        this.isPlayerEven = isPlayerEven;
     }
 
-    public void setPlayerEven(boolean playerEven) {
-        isPlayerEven = playerEven;
-    }
 
 }

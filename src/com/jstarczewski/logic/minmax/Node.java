@@ -7,21 +7,20 @@ import java.util.List;
 
 class Node {
 
-    private boolean isEvenPlayer;
     private Board board;
     private int score;
     private List<Node> children;
 
-    Node(Board board, boolean isEvenPlayer) {
+    Node(Board board) {
         this.board = board;
-        this.isEvenPlayer = isEvenPlayer;
         children = new ArrayList<>();
     }
+
 
     public void addChild(Node node) {
         children.add(node);
     }
-
+/*
     public boolean isEvenPlayer() {
         return isEvenPlayer;
     }
@@ -29,7 +28,7 @@ class Node {
     public void setEvenPlayer(boolean evenPlayer) {
         isEvenPlayer = evenPlayer;
     }
-
+*/
     public Board getBoard() {
         return board;
     }
