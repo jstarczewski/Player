@@ -1,11 +1,12 @@
-package com.jstarczewski.logic;
+package com.jstarczewski.logic.minmax;
 
 import com.jstarczewski.board.Board;
 import com.jstarczewski.board.Element;
+import com.jstarczewski.logic.Algorithm;
 
 import java.util.*;
 
-public class MinMax {
+public class MinMax implements Algorithm {
 
     private Tree tree;
 
@@ -30,16 +31,7 @@ public class MinMax {
         });
     }
 
-    public void makeMove(Board board) {
-        for (Board b : getAllPossibleBlockPositions(board)) {
-            System.out.println(b.toString());
-            System.out.println("\n\n");
-        }
-
-
-    }
-
-    boolean isSpace(Board board) {
+    private boolean isSpace(Board board) {
 
         int ai, aj;
         for (int i = 0; i < board.getSize(); i++) {
@@ -66,6 +58,22 @@ public class MinMax {
         return false;
 
     }
+
+    @Override
+    public ArrayList<Element> getStartMoveData(Board board) {
+        ArrayList<Element> elements = new ArrayList<>();
+
+        for (int i = 0; i < board.getSize(); i++) {
+            for (int j = 0; j < board.getSize(); j++) {
+                if (board.isEmpty(i, j, i + 1, j + 1)) {
+                    elements.add(new Element(i, j));
+                    elements.add(new Element(i + 1, j + 1));
+                }
+            }
+        }
+        return elements;
+    }
+
 
     private ArrayList<Board> getAllPossibleBlockPositions(Board board) {
         ArrayList<Board> boards = new ArrayList<>();
@@ -113,15 +121,17 @@ public class MinMax {
         return root.getScore() % 2 == 0;
     }
 
-    public ArrayList<Element> getWinningCord(int moveIndex) {
+    public ArrayList<Element> getOptimalMoveData(Board board) {
+        constructTree(board);
         ArrayList<Element> elements = new ArrayList<>();
         Node root = tree.getRoot();
         checkWin(root);
         if (root.getScore() % 2 == 0) {
-            elements.addAll(root.getBoard().find(moveIndex));
+            elements.addAll(root.getBoard().find(board.getMoveIndex() + 1));
         }
         return elements;
     }
+
 
     private void checkWin(Node node) {
         List<Node> children = node.getChildren();

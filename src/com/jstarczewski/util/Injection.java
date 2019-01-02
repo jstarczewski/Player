@@ -4,7 +4,7 @@ import com.jstarczewski.board.Board;
 import com.jstarczewski.controller.Controller;
 import com.jstarczewski.inputconsumer.InputConsumer;
 import com.jstarczewski.logic.Logic;
-import com.jstarczewski.logic.MinMax;
+import com.jstarczewski.logic.minmax.MinMax;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

@@ -4,11 +4,10 @@ import com.jstarczewski.board.Element;
 
 import java.util.ArrayList;
 
-public class InputDataParser {
+public class DataParser {
 
     public static ArrayList<Element> parseInputData(String blackSpotDataConfiguration) {
         ArrayList<Element> elements = new ArrayList<Element>();
-
         String[] points = blackSpotDataConfiguration.split(",");
         for (String point : points) {
             String[] xy = point.split(";");
@@ -18,5 +17,20 @@ public class InputDataParser {
         }
         return elements;
     }
+
+    public static String parseOutputData(ArrayList<Element> elements) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Element element : elements) {
+            stringBuilder.append("{");
+            stringBuilder.append(element.getX());
+            stringBuilder.append(";");
+            stringBuilder.append(element.getY());
+            stringBuilder.append("}");
+            stringBuilder.append(",");
+        }
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        return stringBuilder.toString();
+    }
+
 
 }

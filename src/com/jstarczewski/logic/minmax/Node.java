@@ -1,4 +1,4 @@
-package com.jstarczewski.logic;
+package com.jstarczewski.logic.minmax;
 
 import com.jstarczewski.board.Board;
 

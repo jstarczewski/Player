@@ -4,7 +4,7 @@ import com.jstarczewski.board.Board;
 import com.jstarczewski.board.Element;
 import com.jstarczewski.logic.Logic;
 import com.jstarczewski.util.CallBackMessages;
-import com.jstarczewski.util.InputDataParser;
+import com.jstarczewski.util.DataParser;
 
 import java.util.ArrayList;
 
@@ -16,8 +16,6 @@ import java.util.ArrayList;
 public class Controller {
 
     private Board board;
-    private Boolean isPlayerEven = true;
-    private int moveIndex = 0;
     private Logic logic;
 
     private boolean isGameRunning = false;
@@ -25,44 +23,34 @@ public class Controller {
     public Controller(Board board, Logic logic) {
         this.board = board;
         this.logic = logic;
-        logic.setBoard(board);
     }
 
-    public String setBoardSize(String size) {
+    public String initBoard(String size) {
         board.setBoardSize(Integer.valueOf(size));
         return CallBackMessages.successCallback;
     }
 
-    public String fillBoard(String config) {
+    public String initBlackSpots(String config) {
         board.setMoveIndex(-1);
-        board.fillBoard(InputDataParser.parseInputData(config));
+        board.fillBoard(DataParser.parseInputData(config));
         board.setMoveIndex(1);
         return CallBackMessages.successCallback;
     }
 
     private String makeStartMove() {
-        isPlayerEven = false;
-        // mock test element
-        board.setMoveIndex(++moveIndex);
-        board.fillBoard(mockTestElementList());
-        return board.toString();
+        logic.setPlayerEven(false);
+        return DataParser.parseOutputData(logic.getStartMoveData(board));
     }
 
     private String makeMove(String moveData) {
-
-        /*
-        board.fillBoard(++moveIndex, InputDataParser.parseInputData(moveData));
-        //algorithms response
-        board.fillBoard(++moveIndex, mockTestElementList());
-        */
-        if(!logic.makeMove(InputDataParser.parseInputData(moveData)))
-            isGameRunning = false;
-
-        return board.toString();
+        board.fillBoard(DataParser.parseInputData(moveData));
+        ArrayList<Element> optimalMoveData = logic.getOptimalMoveData(board);
+        board.fillBoard(optimalMoveData);
+        return DataParser.parseOutputData(optimalMoveData);
     }
 
 
-    public String response(String input) {
+    public String responseBasedOnInput(String input) {
         if (input.toLowerCase().equals("stop")) {
             isGameRunning = false;
             return CallBackMessages.gameEndCallBack;
@@ -83,12 +71,4 @@ public class Controller {
         return isGameRunning;
     }
 
-    private ArrayList<Element> mockTestElementList() {
-        Element e = new Element(2, 4);
-        Element e2 = new Element(2, 5);
-        ArrayList<Element> elements = new ArrayList<Element>();
-        elements.add(e);
-        elements.add(e2);
-        return elements;
-    }
 }

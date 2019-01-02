@@ -4,10 +4,10 @@ import com.jstarczewski.inputconsumer.InputConsumer;
 import com.jstarczewski.inputconsumer.BaseCallBack;
 import com.jstarczewski.util.Injection;
 
+
 public class Main {
 
     public static void main(String[] args) {
-
 
 
         /**

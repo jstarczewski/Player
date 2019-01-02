@@ -39,7 +39,7 @@ public class InputConsumer {
             if (input == null)
                 configCallBack.notify(CallBackMessages.nullErrorCallback);
             else
-                configCallBack.notify(controller.setBoardSize(input));
+                configCallBack.notify(controller.initBoard(input));
         } catch (IOException e) {
             configCallBack.notify(CallBackMessages.ioErrorCallback + e.getMessage());
         }
@@ -55,7 +55,7 @@ public class InputConsumer {
             if (input == null)
                 blackSpotsCallBack.notify(CallBackMessages.nullErrorCallback);
             else
-                blackSpotsCallBack.notify(controller.fillBoard(input));
+                blackSpotsCallBack.notify(controller.initBlackSpots(input));
         } catch (IOException e) {
             blackSpotsCallBack.notify(CallBackMessages.ioErrorCallback);
         }
@@ -70,7 +70,7 @@ public class InputConsumer {
             if (input == null)
                 moveCallBack.notify(CallBackMessages.nullErrorCallback);
             else
-                moveCallBack.notify(controller.response(input));
+                moveCallBack.notify(controller.responseBasedOnInput(input));
         } catch (IOException e) {
             moveCallBack.notify(CallBackMessages.ioErrorCallback);
         }
