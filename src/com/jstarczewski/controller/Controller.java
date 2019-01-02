@@ -39,16 +39,20 @@ public class Controller {
 
     private String makeStartMove() {
         logic.setPlayerEven(false);
-        return DataParser.parseOutputData(logic.getStartMoveData(board));
+        ArrayList<Element> startMoveData = logic.getStartMoveData(board);
+        board.fillBoard(startMoveData);
+        return DataParser.parseOutputData(startMoveData);
     }
 
     private String makeMove(String moveData) {
         board.fillBoard(DataParser.parseInputData(moveData));
         ArrayList<Element> optimalMoveData = logic.getOptimalMoveData(board);
         if (optimalMoveData.isEmpty()) {
+            isGameRunning = false;
             return CallBackMessages.noMoveErrorCallBack;
         } else {
             board.fillBoard(optimalMoveData);
+            System.out.println(board.toString());
             return DataParser.parseOutputData(optimalMoveData);
         }
     }
