@@ -100,14 +100,28 @@ public class MinMax implements Algorithm {
 
     private void constructTree(Node node) {
         List<Board> listOfBoardsOfPossibleMoves = getAllPossibleBlockPositions(node.getBoard());
+        /*
         listOfBoardsOfPossibleMoves.forEach(n -> {
             Node newNode = new Node(n);
             node.addChild(newNode);
             if (isSpace(newNode.getBoard())) {
                 constructTree(newNode);
             }
-
+            if (newNode.getBoard().getMoveIndex() % 2 == 0) {
+                return newNode;
+            }
         });
+        */
+        for (Board b : listOfBoardsOfPossibleMoves) {
+            Node newNode = new Node(b);
+            node.addChild(newNode);
+            if (isSpace(newNode.getBoard())) {
+                constructTree(newNode);
+            }
+            if (newNode.getBoard().getMoveIndex() % 2 == 0) {
+                return;
+            }
+        }
     }
 
     public ArrayList<Element> getOptimalMoveData(Board board) {
@@ -116,7 +130,7 @@ public class MinMax implements Algorithm {
         Node root = tree.getRoot();
         try {
             findWinningBranch(root);
-            elements.addAll((root.getBoard()).find(board.getMoveIndex()+1));
+            elements.addAll((root.getBoard()).find(board.getMoveIndex()));
         } catch (NoSuchElementException e) {
             return elements;
         }
