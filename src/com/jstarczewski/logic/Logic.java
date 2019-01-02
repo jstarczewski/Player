@@ -5,7 +5,7 @@ import com.jstarczewski.board.Element;
 
 import java.util.ArrayList;
 
-public class Logic {
+public class Logic implements Algorithm {
 
     private boolean isPlayerEven = true;
 

@@ -54,7 +54,7 @@ public class MinMax implements Algorithm {
 
 
     private Board getPossibleBlockPositions(Board board) {
-        Board board1;
+        Board board1 = new Board();
         int ai, aj;
         for (int i = 0; i < board.getSize(); i++) {
             for (int j = 0; j < board.getSize(); j++) {
@@ -114,12 +114,11 @@ public class MinMax implements Algorithm {
         constructTree(board);
         ArrayList<Element> elements = new ArrayList<>();
         Node root = tree.getRoot();
-        //constructTree(root);
         try {
             findWinningBranch(root);
-            elements.addAll((root.getBoard()).find(board.getMoveIndex()));
+            elements.addAll((root.getBoard()).find(board.getMoveIndex()+1));
         } catch (NoSuchElementException e) {
-
+            return elements;
         }
         return elements;
     }
@@ -144,7 +143,8 @@ public class MinMax implements Algorithm {
     private Node findBestChild(List<Node> children) {
         Comparator<Node> byScoreComparator = Comparator.comparing(Node::getScore);
         return children.stream()
-                .max(byScoreComparator.reversed())
+                //  .filter(isPlayerEven ? node -> node.getScore() % 2 == 0 : node -> node.getScore() % 2 != 0)
+                .max(byScoreComparator)
                 .orElseThrow(NoSuchElementException::new);
     }
 
