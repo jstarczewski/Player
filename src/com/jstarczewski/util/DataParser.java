@@ -1,6 +1,6 @@
 package com.jstarczewski.util;
 
-import com.jstarczewski.board.Element;
+import com.jstarczewski.logic.minmax.board.Element;
 
 import java.util.ArrayList;
 
@@ -8,6 +8,7 @@ public class DataParser {
 
     public static ArrayList<Element> parseInputData(String blackSpotDataConfiguration) {
         ArrayList<Element> elements = new ArrayList<Element>();
+        // {1;2},{2;3}
         String[] points = blackSpotDataConfiguration.split(",");
         for (String point : points) {
             String[] xy = point.split(";");

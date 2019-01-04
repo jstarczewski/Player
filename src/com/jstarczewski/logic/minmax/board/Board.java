@@ -1,4 +1,4 @@
-package com.jstarczewski.board;
+package com.jstarczewski.logic.minmax.board;
 
 import java.util.ArrayList;
 
@@ -56,7 +56,7 @@ public class Board {
         return stringBuilder.toString();
     }
 
-    private void fillField(int i, int j, int ai, int aj) {
+    public void fillField(int i, int j, int ai, int aj) {
         board[i][j] = moveIndex;
         board[ai][aj] = moveIndex;
         moveIndex++;

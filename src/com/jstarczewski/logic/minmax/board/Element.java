@@ -1,4 +1,4 @@
-package com.jstarczewski.board;
+package com.jstarczewski.logic.minmax.board;
 
 public class Element {
 

@@ -1,16 +1,15 @@
 package com.jstarczewski.logic;
 
-import com.jstarczewski.board.Board;
-import com.jstarczewski.board.Element;
+import com.jstarczewski.logic.minmax.board.Element;
 
 import java.util.ArrayList;
 
 public interface Algorithm {
 
-    ArrayList<Element> getOptimalMoveData(Board board);
+    ArrayList<Element> getOptimalMoveData(ArrayList<Element> coordinates);
 
-    ArrayList<Element> getStartMoveData(Board board);
+    ArrayList<Element> getStartMoveData();
 
-    void setPlayerEven(boolean isPlayerEven);
+    void setPlayer(boolean isPlayerEven);
 
 }

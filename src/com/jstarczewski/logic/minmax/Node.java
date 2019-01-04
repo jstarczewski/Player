@@ -1,18 +1,19 @@
 package com.jstarczewski.logic.minmax;
 
-import com.jstarczewski.board.Board;
+
+import com.jstarczewski.logic.minmax.board.Block;
 
 import java.util.ArrayList;
 import java.util.List;
 
 class Node {
 
-    private Board board;
+    private Block block;
     private int score;
     private List<Node> children;
 
-    Node(Board board) {
-        this.board = board;
+    Node(Block block) {
+        this.block = block;
         children = new ArrayList<>();
     }
 
@@ -29,12 +30,12 @@ class Node {
         isEvenPlayer = evenPlayer;
     }
 */
-    public Board getBoard() {
-        return board;
+    public Block getBlock() {
+        return block;
     }
 
-    public void setBoard(Board board) {
-        this.board = board;
+    public void setBlock(Block block) {
+        this.block = block;
     }
 
     public List<Node> getChildren() {

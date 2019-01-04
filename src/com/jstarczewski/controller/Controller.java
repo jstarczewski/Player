@@ -1,8 +1,7 @@
 package com.jstarczewski.controller;
 
-import com.jstarczewski.board.Board;
-import com.jstarczewski.board.Element;
 import com.jstarczewski.logic.Logic;
+import com.jstarczewski.logic.minmax.board.Element;
 import com.jstarczewski.util.CallBackMessages;
 import com.jstarczewski.util.DataParser;
 
@@ -15,45 +14,34 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    private Board board;
-    private Logic logic;
+    private Logic minMaxLogic;
 
     private boolean isGameRunning = false;
 
-    public Controller(Board board, Logic logic) {
-        this.board = board;
-        this.logic = logic;
+    public Controller(Logic minMaxLogic) {
+        this.minMaxLogic = minMaxLogic;
     }
 
     public String initBoard(String size) {
-        board.setBoardSize(Integer.valueOf(size));
+        minMaxLogic.initSize(Integer.valueOf(size));
         return CallBackMessages.successCallback;
     }
 
     public String initBlackSpots(String config) {
-        board.setMoveIndex(-1);
-        board.fillBoard(DataParser.parseInputData(config));
-        board.setMoveIndex(1);
+        minMaxLogic.initBlackSpots(DataParser.parseInputData(config));
         return CallBackMessages.successCallback;
     }
 
     private String makeStartMove() {
-        logic.setPlayerEven(false);
-        ArrayList<Element> startMoveData = logic.getStartMoveData(board);
-        board.fillBoard(startMoveData);
-        return DataParser.parseOutputData(startMoveData);
+        return DataParser.parseOutputData(minMaxLogic.getStartMoveData());
     }
 
     private String makeMove(String moveData) {
-        board.fillBoard(DataParser.parseInputData(moveData));
-        ArrayList<Element> optimalMoveData = logic.getOptimalMoveData(board);
-        if (optimalMoveData.isEmpty()) {
-            isGameRunning = false;
+        ArrayList<Element> optimalMove = minMaxLogic.getOptimalMoveData(DataParser.parseInputData(moveData));
+        if (optimalMove.isEmpty()) {
             return CallBackMessages.noMoveErrorCallBack;
         } else {
-            board.fillBoard(optimalMoveData);
-            System.out.println(board.toString());
-            return DataParser.parseOutputData(optimalMoveData);
+            return DataParser.parseOutputData(optimalMove);
         }
     }
 
