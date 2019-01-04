@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67124791-708d-400e-b3ab-53408b21fed1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/MinMaxLogic.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/board/Block.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/board/Block.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/board/Board.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/board/Board.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/board/Board.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/board/Element.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/board/Element.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/board/Element.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/controller/Controller.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/controller/Controller.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/Algorithm.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/logic/Algorithm.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/Logic.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/MinMax.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/MinMax.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/Node.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/Node.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/util/DataParser.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/util/DataParser.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/util/Injection.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/util/Injection.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -298,12 +284,12 @@
       <workItem from="1546420672228" duration="24262000" />
       <workItem from="1546470194647" duration="497000" />
       <workItem from="1546471281209" duration="6244000" />
-      <workItem from="1546622570737" duration="2223000" />
+      <workItem from="1546622570737" duration="2451000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81214000" />
+    <option name="totallyTimeSpent" value="81442000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
