@@ -1,7 +1,6 @@
 package com.jstarczewski.logic.mcts;
 
-import com.jstarczewski.logic.Element;
-
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Board {
@@ -61,6 +60,13 @@ public class Board {
             }
 
         }
+    }
+
+    public void filter(ArrayList<Element> elements) {
+        elements.forEach(move -> {
+            moves.removeIf(element -> (element.getX() == move.getX()) || (element.getY() == move.getY()));
+            moves.removeIf(element -> (element.getX() == move.getY()) || (element.getY() == move.getX()));
+        });
     }
 
     public void performMove(int lastPlayer, Element move) {

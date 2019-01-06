@@ -1,10 +1,9 @@
 package com.jstarczewski.util;
 
-import com.jstarczewski.logic.minmax.MinMaxLogic;
-import com.jstarczewski.logic.minmax.board.Board;
+import com.jstarczewski.logic.mcts.MCTSLogic;
+import com.jstarczewski.logic.mcts.MonteCarloTreeSearch;
 import com.jstarczewski.controller.Controller;
 import com.jstarczewski.inputconsumer.GameInputConsumer;
-import com.jstarczewski.logic.minmax.MinMax;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,7 +15,7 @@ public class Injection {
      */
 
     public static GameInputConsumer provideInputConsumer() {
-        return GameInputConsumer.getInstance(new BufferedReader(new InputStreamReader(System.in)), new Controller(new MinMaxLogic(new MinMax(), new Board())));
+        return GameInputConsumer.getInstance(new BufferedReader(new InputStreamReader(System.in)), new Controller(new MCTSLogic(new MonteCarloTreeSearch())));
     }
 
 }

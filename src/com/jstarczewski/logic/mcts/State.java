@@ -1,6 +1,5 @@
 package com.jstarczewski.logic.mcts;
 
-import com.jstarczewski.logic.Element;
 
 import java.util.HashSet;
 

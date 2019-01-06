@@ -1,7 +1,7 @@
 package com.jstarczewski.controller;
 
 import com.jstarczewski.logic.Logic;
-import com.jstarczewski.logic.minmax.board.Element;
+import com.jstarczewski.logic.mcts.Element;
 import com.jstarczewski.util.CallBackMessages;
 import com.jstarczewski.util.DataParser;
 

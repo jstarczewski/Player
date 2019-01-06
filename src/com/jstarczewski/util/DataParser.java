@@ -1,10 +1,13 @@
 package com.jstarczewski.util;
 
-import com.jstarczewski.logic.minmax.board.Element;
+
+import com.jstarczewski.logic.mcts.Element;
 
 import java.util.ArrayList;
 
 public class DataParser {
+
+    public static int size;
 
     public static ArrayList<Element> parseInputData(String blackSpotDataConfiguration) {
         ArrayList<Element> elements = new ArrayList<Element>();
@@ -33,5 +36,16 @@ public class DataParser {
         return stringBuilder.toString();
     }
 
+    public static Element parseInpuyDataToElement(String data) {
+        return getCords(parseInputData(data));
+    }
+
+    public static Element parseInpuyDataToElement(ArrayList<Element> elements) {
+        return getCords(elements);
+    }
+
+    private static Element getCords(ArrayList<Element> elements) {
+        return new Element(elements.get(0).getX() * size + elements.get(0).getY(), elements.get(1).getX() * size + elements.get(1).getY());
+    }
 
 }

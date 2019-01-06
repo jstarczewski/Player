@@ -1,6 +1,6 @@
 package com.jstarczewski.logic;
 
-import com.jstarczewski.logic.minmax.board.Element;
+import com.jstarczewski.logic.mcts.Element;
 
 import java.util.ArrayList;
 

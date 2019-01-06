@@ -1,39 +1,36 @@
 package com.jstarczewski.logic.mcts;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 class Node {
 
     State state;
     Node parent;
 
-    List<Node> childArray;
+    HashSet<Node> childArray;
 
     public Node() {
         this.state = new State();
-        childArray = new ArrayList<>();
+        childArray = new HashSet<>();
     }
 
     public Node(State state) {
         this.state = state;
-        childArray = new ArrayList<>();
+        childArray = new HashSet<>();
     }
 
-    public Node(State state, Node parent, List<Node> childArray) {
+    public Node(State state, Node parent, HashSet<Node> childArray) {
         this.state = state;
         this.parent = parent;
         this.childArray = childArray;
     }
 
     public Node(Node node) {
-        this.childArray = new ArrayList<>();
+        this.childArray = new HashSet<>();
         this.state = new State(node.getState());
         if (node.getParent() != null)
             this.parent = node.getParent();
-        List<Node> childArray = node.getChildArray();
+        HashSet<Node> childArray = node.getChildArray();
         for (Node child : childArray) {
             this.childArray.add(new Node(child));
         }
@@ -55,18 +52,16 @@ class Node {
         this.parent = parent;
     }
 
-    public List<Node> getChildArray() {
+    public HashSet<Node> getChildArray() {
         return childArray;
     }
 
-    public void setChildArray(List<Node> childArray) {
+    public void setChildArray(HashSet<Node> childArray) {
         this.childArray = childArray;
     }
 
     public Node getRandomChildNode() {
-        int noOfPossibleMoves = this.childArray.size();
-        int selectRandom = (int) (Math.random() * noOfPossibleMoves);
-        return this.childArray.get(selectRandom);
+        return this.childArray.iterator().next();
     }
 
     public Node getChildWithMaxScore() {
