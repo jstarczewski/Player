@@ -27,7 +27,8 @@ public class MonteCarloTreeSearch {
 
     public Board findNextMove(Board board, int playerNo) {
         long start = System.currentTimeMillis();
-        long end = start + 5 * getMillisForCurrentLevel();
+        long end = 400 + start;
+        //start + 3 * getMillisForCurrentLevel();
 
         opponent = 3 - playerNo;
         Tree tree = new Tree();

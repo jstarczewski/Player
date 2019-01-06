@@ -67,10 +67,13 @@ public class GameInputConsumer {
     private void consumeMove(BaseCallBack.MoveCallBack moveCallBack) {
         try {
             String input = bufferedReader.readLine();
-            if (input == null)
+            if (input == null) {
                 moveCallBack.notify(CallBackMessages.nullErrorCallback);
-            else
+            } else {
+                long startTimne = System.currentTimeMillis();
                 moveCallBack.notify(controller.responseBasedOnInput(input));
+                System.out.println(System.currentTimeMillis() - startTimne);
+            }
         } catch (IOException e) {
             moveCallBack.notify(CallBackMessages.ioErrorCallback);
         }
