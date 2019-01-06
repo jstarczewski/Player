@@ -43,6 +43,11 @@ public class MCTSLogic implements Logic {
     }
 
     @Override
+    public boolean isGameEnd() {
+        return board.getMoves().isEmpty();
+    }
+
+    @Override
     public void setPlayer(int player) {
         board.setLastPlayer(player);
     }

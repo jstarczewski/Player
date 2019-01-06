@@ -65,8 +65,8 @@ public class Board {
 
     public void filter(ArrayList<Element> elements) {
         elements.forEach(move -> {
-            moves.removeIf(element -> (element.getX() == move.getX()) || (element.getY() == move.getY()));
-            moves.removeIf(element -> (element.getX() == move.getY()) || (element.getY() == move.getX()));
+            int x = move.getX()*size+move.getY();
+            moves.removeIf(element -> (element.getX() == x || (element.getY() == x)));
         });
     }
 

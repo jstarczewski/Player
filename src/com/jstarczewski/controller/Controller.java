@@ -36,9 +36,12 @@ public class Controller {
 
     private String makeMove(String moveData) {
         Element optimalMove = minMaxLogic.getOptimalMoveData(DataParser.parseInputData(moveData));
-        if (optimalMove==null) {
+        if (optimalMove == null) {
+            isGameRunning = false;
             return CallBackMessages.noMoveErrorCallBack;
         } else {
+            if (minMaxLogic.isGameEnd())
+                isGameRunning = false;
             return DataParser.parseOutputData(optimalMove);
         }
     }
