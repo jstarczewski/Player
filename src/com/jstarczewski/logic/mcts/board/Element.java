@@ -1,4 +1,4 @@
-package com.jstarczewski.logic.mcts;
+package com.jstarczewski.logic.mcts.board;
 
 import java.util.Objects;
 

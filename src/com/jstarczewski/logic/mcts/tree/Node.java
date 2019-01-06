@@ -1,8 +1,10 @@
-package com.jstarczewski.logic.mcts;
+package com.jstarczewski.logic.mcts.tree;
+
+import com.jstarczewski.logic.mcts.algorithm.State;
 
 import java.util.*;
 
-class Node {
+public class Node {
 
     State state;
     Node parent;
@@ -30,7 +32,7 @@ class Node {
         this.state = new State(node.getState());
         if (node.getParent() != null)
             this.parent = node.getParent();
-        HashSet<Node> childArray = node.getChildArray();
+        HashSet<Node> childArray = node.getChildHashSet();
         for (Node child : childArray) {
             this.childArray.add(new Node(child));
         }
@@ -52,11 +54,11 @@ class Node {
         this.parent = parent;
     }
 
-    public HashSet<Node> getChildArray() {
+    public HashSet<Node> getChildHashSet() {
         return childArray;
     }
 
-    public void setChildArray(HashSet<Node> childArray) {
+    public void setChildHashSet(HashSet<Node> childArray) {
         this.childArray = childArray;
     }
 

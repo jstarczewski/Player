@@ -1,4 +1,6 @@
-package com.jstarczewski.logic.mcts;
+package com.jstarczewski.logic.mcts.algorithm;
+
+import com.jstarczewski.logic.mcts.tree.Node;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,7 +17,7 @@ public class UCT {
     static Node findBestNodeWithUCT(Node node) {
         int parentVisit = node.getState().getVisitCount();
         return Collections.max(
-                node.getChildArray(),
+                node.getChildHashSet(),
                 Comparator.comparing(c -> uctValue(parentVisit, c.getState().getWinScore(), c.getState().getVisitCount())));
     }
 

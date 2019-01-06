@@ -1,7 +1,7 @@
 package com.jstarczewski.util;
 
 import com.jstarczewski.logic.mcts.MCTSLogic;
-import com.jstarczewski.logic.mcts.MonteCarloTreeSearch;
+import com.jstarczewski.logic.mcts.algorithm.MonteCarloTreeSearch;
 import com.jstarczewski.controller.Controller;
 import com.jstarczewski.inputconsumer.GameInputConsumer;
 

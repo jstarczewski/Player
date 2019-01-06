@@ -1,8 +1,8 @@
-package com.jstarczewski.logic.mcts;
+package com.jstarczewski.logic.mcts.tree;
 
 public class Tree {
 
-    Node root;
+    public Node root;
 
 
     public Tree() {
@@ -22,7 +22,7 @@ public class Tree {
     }
 
     public void addChild(Node parent, Node child) {
-        parent.getChildArray().add(child);
+        parent.getChildHashSet().add(child);
     }
 
 }

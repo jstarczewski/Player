@@ -1,4 +1,8 @@
-package com.jstarczewski.logic.mcts;
+package com.jstarczewski.logic.mcts.algorithm;
+
+import com.jstarczewski.logic.mcts.board.Board;
+import com.jstarczewski.logic.mcts.tree.Node;
+import com.jstarczewski.logic.mcts.tree.Tree;
 
 import java.util.HashSet;
 
@@ -13,22 +17,9 @@ public class MonteCarloTreeSearch {
         this.level = 3;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    private int getMillisForCurrentLevel() {
-        return 2 * (this.level - 1) + 1;
-    }
-
     public Board findNextMove(Board board, int playerNo) {
         long start = System.currentTimeMillis();
-        long end = 400 + start;
-        //start + 3 * getMillisForCurrentLevel();
+        long end = start + 5 * getMillisForCurrentLevel();
 
         opponent = 3 - playerNo;
         Tree tree = new Tree();
@@ -45,7 +36,7 @@ public class MonteCarloTreeSearch {
 
             // Phase 3 - Simulation
             Node nodeToExplore = promisingNode;
-            if (promisingNode.getChildArray().size() > 0) {
+            if (promisingNode.getChildHashSet().size() > 0) {
                 nodeToExplore = promisingNode.getRandomChildNode();
             }
             int playoutResult = simulateRandomPlayout(nodeToExplore);
@@ -60,7 +51,7 @@ public class MonteCarloTreeSearch {
 
     private Node selectPromisingNode(Node rootNode) {
         Node node = rootNode;
-        while (node.getChildArray().size() != 0) {
+        while (node.getChildHashSet().size() != 0) {
             node = UCT.findBestNodeWithUCT(node);
         }
         return node;
@@ -72,7 +63,7 @@ public class MonteCarloTreeSearch {
             Node newNode = new Node(state);
             newNode.setParent(node);
             newNode.getState().setPlayerNo(node.getState().getOpponent());
-            node.getChildArray().add(newNode);
+            node.getChildHashSet().add(newNode);
         });
     }
 
@@ -104,5 +95,16 @@ public class MonteCarloTreeSearch {
         return boardStatus;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    private int getMillisForCurrentLevel() {
+        return 2 * (this.level - 1) + 1;
+    }
 
 }

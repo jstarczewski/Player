@@ -1,7 +1,7 @@
 package com.jstarczewski.logic;
 
 
-import com.jstarczewski.logic.mcts.Element;
+import com.jstarczewski.logic.mcts.board.Element;
 
 import java.util.ArrayList;
 

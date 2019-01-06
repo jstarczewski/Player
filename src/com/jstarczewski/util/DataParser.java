@@ -1,7 +1,7 @@
 package com.jstarczewski.util;
 
 
-import com.jstarczewski.logic.mcts.Element;
+import com.jstarczewski.logic.mcts.board.Element;
 
 import java.util.ArrayList;
 
@@ -36,12 +36,27 @@ public class DataParser {
         return stringBuilder.toString();
     }
 
-    public static Element parseInpuyDataToElement(String data) {
+    public static Element parseInputDataToElement(String data) {
         return getCords(parseInputData(data));
     }
 
-    public static Element parseInpuyDataToElement(ArrayList<Element> elements) {
+    public static Element parseInputDataToElement(ArrayList<Element> elements) {
         return getCords(elements);
+    }
+
+    public static String parseOutputData(Element element) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{");
+        stringBuilder.append((element.getX())/size);
+        stringBuilder.append(";");
+        stringBuilder.append(element.getX()-((element.getX()/size)*size));
+        stringBuilder.append("},{");
+        stringBuilder.append((element.getY())/size);
+        stringBuilder.append(";");
+        stringBuilder.append(element.getY()-((element.getY()/size)*size));
+        stringBuilder.append("}");
+        return stringBuilder.toString();
+
     }
 
     private static Element getCords(ArrayList<Element> elements) {

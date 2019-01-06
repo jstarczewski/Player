@@ -1,6 +1,9 @@
 package com.jstarczewski.logic.mcts;
 
 import com.jstarczewski.logic.Logic;
+import com.jstarczewski.logic.mcts.algorithm.MonteCarloTreeSearch;
+import com.jstarczewski.logic.mcts.board.Board;
+import com.jstarczewski.logic.mcts.board.Element;
 import com.jstarczewski.util.DataParser;
 
 import java.util.ArrayList;
@@ -8,14 +11,13 @@ import java.util.ArrayList;
 public class MCTSLogic implements Logic {
 
     private MonteCarloTreeSearch monteCarloTreeSearch;
-    Board board;
-    int PlayerN = 1;
+    private Board board;
+    private int player = 1;
 
     public MCTSLogic(MonteCarloTreeSearch monteCarloTreeSearch) {
         this.monteCarloTreeSearch = monteCarloTreeSearch;
 
     }
-
 
     @Override
     public void initSize(int size) {
@@ -29,13 +31,10 @@ public class MCTSLogic implements Logic {
     }
 
     @Override
-    public ArrayList<Element> getOptimalMoveData(ArrayList<Element> coordinates) {
-        board.performMove(PlayerN, DataParser.parseInpuyDataToElement(coordinates));
-        board = monteCarloTreeSearch.findNextMove(board, PlayerN);
-        Element bMove = board.getLastMove();
-        ArrayList<Element> moves = new ArrayList<>();
-        moves.add(bMove);
-        return moves;
+    public Element getOptimalMoveData(ArrayList<Element> coordinates) {
+        board.performMove(player, DataParser.parseInputDataToElement(coordinates));
+        board = monteCarloTreeSearch.findNextMove(board, player);
+        return board.getLastMove();
     }
 
     @Override
@@ -44,7 +43,7 @@ public class MCTSLogic implements Logic {
     }
 
     @Override
-    public void setPlayer(boolean isPlayerEven) {
-
+    public void setPlayer(int player) {
+        board.setLastPlayer(player);
     }
 }

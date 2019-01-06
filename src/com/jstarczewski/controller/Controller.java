@@ -1,11 +1,9 @@
 package com.jstarczewski.controller;
 
 import com.jstarczewski.logic.Logic;
-import com.jstarczewski.logic.mcts.Element;
+import com.jstarczewski.logic.mcts.board.Element;
 import com.jstarczewski.util.CallBackMessages;
 import com.jstarczewski.util.DataParser;
-
-import java.util.ArrayList;
 
 
 /**
@@ -37,8 +35,8 @@ public class Controller {
     }
 
     private String makeMove(String moveData) {
-        ArrayList<Element> optimalMove = minMaxLogic.getOptimalMoveData(DataParser.parseInputData(moveData));
-        if (optimalMove.isEmpty()) {
+        Element optimalMove = minMaxLogic.getOptimalMoveData(DataParser.parseInputData(moveData));
+        if (optimalMove==null) {
             return CallBackMessages.noMoveErrorCallBack;
         } else {
             return DataParser.parseOutputData(optimalMove);

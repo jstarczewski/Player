@@ -1,5 +1,8 @@
-package com.jstarczewski.logic.mcts;
+package com.jstarczewski.logic.mcts.algorithm;
 
+
+import com.jstarczewski.logic.mcts.board.Board;
+import com.jstarczewski.logic.mcts.board.Element;
 
 import java.util.HashSet;
 
@@ -57,7 +60,6 @@ public class State {
 
 
     void randomPlay() {
-        HashSet<Element> availableMoves = new HashSet<>(this.board.getMoves());
         this.board.performMove(this.playerNo, this.board.getMoves().iterator().next());
     }
 

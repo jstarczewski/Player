@@ -1,4 +1,4 @@
-package com.jstarczewski.logic.mcts;
+package com.jstarczewski.logic.mcts.board;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -6,8 +6,9 @@ import java.util.HashSet;
 public class Board {
     private HashSet<Element> moves;
 
-    int lastPlayer;
+    private int lastPlayer;
     private Element lastMove = new Element(0, 0);
+
     public static final int PLAYER_1 = 1;
     public static final int PLAYER_2 = 2;
     public static final int IN_PROGRESS = -1;
@@ -76,11 +77,6 @@ public class Board {
         moves.removeIf(element -> (element.getX() == move.getY()) || (element.getY() == move.getX()));
     }
 
-    public void performMove(int lastPlayer, int i, int j) {
-        moves.removeIf(element -> (element.getX() == i) || (element.getY() == j));
-        moves.removeIf(element -> (element.getX() == i) || (element.getY() == j));
-        System.out.println(moves.size());
-    }
 
     public int checkStatus() {
         if (!moves.isEmpty())
@@ -102,4 +98,9 @@ public class Board {
     public Element getLastMove() {
         return lastMove;
     }
+
+    public void setLastPlayer(int lastPlayer) {
+        this.lastPlayer = lastPlayer;
+    }
+
 }
