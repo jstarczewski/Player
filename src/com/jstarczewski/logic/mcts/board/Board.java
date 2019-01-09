@@ -73,8 +73,7 @@ public class Board {
     public void performMove(int lastPlayer, Element move) {
         this.lastPlayer = lastPlayer;
         this.lastMove = move;
-        moves.removeIf(element -> (element.getX() == move.getX()) || (element.getY() == move.getY()));
-        moves.removeIf(element -> (element.getX() == move.getY()) || (element.getY() == move.getX()));
+        moves.removeIf(element -> (element.getX() == move.getX()) || (element.getY() == move.getY() || element.getX() == move.getY()) || (element.getY() == move.getX()));
     }
 
 

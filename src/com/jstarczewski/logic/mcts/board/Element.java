@@ -11,6 +11,7 @@ public class Element {
         this.x = x;
         this.y = y;
     }
+
     public int getX() {
         return x;
     }
@@ -46,6 +47,6 @@ public class Element {
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
+        return x + y + 13;
     }
 }

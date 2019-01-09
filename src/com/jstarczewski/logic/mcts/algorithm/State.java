@@ -59,7 +59,7 @@ public class State {
     }
 
 
-    void randomPlay() {
+    void play() {
         this.board.performMove(this.playerNo, this.board.getMoves().iterator().next());
     }
 
