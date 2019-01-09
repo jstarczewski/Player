@@ -8,7 +8,10 @@ public class CallBackMessages {
      */
 
     public static final String successCallback = "ok";
-    public static final String dataFormatErrorCallback = "Data format is wrong at : ";
+    public static final String dataFormatErrorCallback = "Wrong data fromat at : ";
+    public static final String arrayIndexOutOfBoundErrorCallback = "Passed data of coordinates is nor formatted properly at : ";
+    public static final String stringOutOfBoundErrorException = "Passed string is not formatted properly at : ";
+    public static final String noSuchMoveAvailableErrorCallback = "Algorithm does not consider this move available ";
     public static final String ioErrorCallback = "input/output error occurred : ";
     public static final String nullErrorCallback = "Null pointer occurred : ";
     public static final String gameEndCallBack = "Game ended";

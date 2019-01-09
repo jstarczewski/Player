@@ -68,4 +68,8 @@ public class Controller {
         return isGameRunning;
     }
 
+    public void stopGame() {
+        isGameRunning = false;
+    }
+
 }

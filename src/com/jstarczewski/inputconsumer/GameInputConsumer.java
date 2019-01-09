@@ -5,6 +5,7 @@ import com.jstarczewski.util.CallBackMessages;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.NoSuchElementException;
 
 public class GameInputConsumer {
 
@@ -43,10 +44,19 @@ public class GameInputConsumer {
         } catch (NumberFormatException e) {
             configCallBack.notify(CallBackMessages.dataFormatErrorCallback + e.getLocalizedMessage());
             closeReader();
+        } catch (StringIndexOutOfBoundsException e) {
+            configCallBack.notify(CallBackMessages.stringOutOfBoundErrorException + e.getLocalizedMessage());
+            closeReader();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            configCallBack.notify(CallBackMessages.arrayIndexOutOfBoundErrorCallback + e.getLocalizedMessage());
+            closeReader();
+        } catch (NoSuchElementException e) {
+            configCallBack.notify(CallBackMessages.noSuchMoveAvailableErrorCallback + e.getLocalizedMessage());
+            closeReader();
         } catch (IOException e) {
             configCallBack.notify(CallBackMessages.ioErrorCallback + e.getLocalizedMessage());
-            closeReader();
         }
+
     }
 
     /**
@@ -59,12 +69,20 @@ public class GameInputConsumer {
                 blackSpotsCallBack.notify(CallBackMessages.nullErrorCallback);
             else
                 blackSpotsCallBack.notify(controller.initBlackSpots(input));
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+        } catch (NumberFormatException e) {
             blackSpotsCallBack.notify(CallBackMessages.dataFormatErrorCallback + e.getLocalizedMessage());
+            closeReader();
+        } catch (StringIndexOutOfBoundsException e) {
+            blackSpotsCallBack.notify(CallBackMessages.stringOutOfBoundErrorException + e.getLocalizedMessage());
+            closeReader();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            blackSpotsCallBack.notify(CallBackMessages.arrayIndexOutOfBoundErrorCallback + e.getLocalizedMessage());
+            closeReader();
+        } catch (NoSuchElementException e) {
+            blackSpotsCallBack.notify(CallBackMessages.noSuchMoveAvailableErrorCallback + e.getLocalizedMessage());
             closeReader();
         } catch (IOException e) {
             blackSpotsCallBack.notify(CallBackMessages.ioErrorCallback + e.getLocalizedMessage());
-            closeReader();
         }
     }
 
@@ -81,9 +99,18 @@ public class GameInputConsumer {
                 moveCallBack.notify(controller.responseBasedOnInput(input));
                 System.out.println(System.currentTimeMillis() - startTime);
             }
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+        } catch (NumberFormatException e) {
             moveCallBack.notify(CallBackMessages.dataFormatErrorCallback + e.getLocalizedMessage());
             closeReader();
+            controller.stopGame();
+        } catch (IndexOutOfBoundsException e) {
+            moveCallBack.notify(CallBackMessages.arrayIndexOutOfBoundErrorCallback + e.getLocalizedMessage());
+            closeReader();
+            controller.stopGame();
+        } catch (NoSuchElementException e) {
+            moveCallBack.notify(CallBackMessages.noSuchMoveAvailableErrorCallback + e.getLocalizedMessage());
+            closeReader();
+            controller.stopGame();
         } catch (IOException e) {
             moveCallBack.notify(CallBackMessages.ioErrorCallback + e.getLocalizedMessage());
         }
