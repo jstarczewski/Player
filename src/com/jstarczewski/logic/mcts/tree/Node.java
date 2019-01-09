@@ -62,7 +62,7 @@ public class Node {
         this.childArray = childArray;
     }
 
-    public Node getRandomChildNode() {
+    public Node getChildNode() {
         return this.childArray.iterator().next();
     }
 

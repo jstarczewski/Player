@@ -32,24 +32,32 @@ public class MCTSLogic implements Logic {
 
     @Override
     public Element getOptimalMoveData(ArrayList<Element> coordinates) {
+        System.out.println("Before ->" + board.getMoves().size());
         board.performMove(player, DataParser.parseInputDataToElement(coordinates));
-        board = monteCarloTreeSearch.findNextMove(board, player);
-        return board.getLastMove();
-    }
+        if (board.getMoves().size() > 1300) {
+            board = Reverse.reverseMove(board, DataParser.parseInputDataToElement(coordinates));
+        } else {
+            board = monteCarloTreeSearch.findNextMove(board, player);
 
-    @Override
-    public Element getStartMoveData() {
-        board = monteCarloTreeSearch.findNextMove(board, player);
-        return board.getLastMove();
-    }
+            //   }
 
-    @Override
-    public boolean isGameEnd() {
-        return board.getMoves().isEmpty();
-    }
+            return board.getLastMove();
+        }
 
-    @Override
-    public void setPlayer(int player) {
-        board.setLastPlayer(player);
+
+        @Override
+        public Element getStartMoveData () {
+            board = monteCarloTreeSearch.findNextMove(board, player);
+            return board.getLastMove();
+        }
+
+        @Override
+        public boolean isGameEnd () {
+            return board.getMoves().isEmpty();
+        }
+
+        @Override
+        public void setPlayer ( int player){
+            board.setLastPlayer(player);
+        }
     }
-}

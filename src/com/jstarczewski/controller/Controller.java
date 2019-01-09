@@ -12,35 +12,35 @@ import com.jstarczewski.util.DataParser;
 
 public class Controller {
 
-    private Logic minMaxLogic;
+    private Logic mctsLogic;
 
     private boolean isGameRunning = false;
 
-    public Controller(Logic minMaxLogic) {
-        this.minMaxLogic = minMaxLogic;
+    public Controller(Logic mctsLogic) {
+        this.mctsLogic = mctsLogic;
     }
 
     public String initBoard(String size) {
-        minMaxLogic.initSize(Integer.valueOf(size));
+        mctsLogic.initSize(Integer.valueOf(size));
         return CallBackMessages.successCallback;
     }
 
     public String initBlackSpots(String config) {
-        minMaxLogic.initBlackSpots(DataParser.parseInputData(config));
+        mctsLogic.initBlackSpots(DataParser.parseInputData(config));
         return CallBackMessages.successCallback;
     }
 
     private String makeStartMove() {
-        return DataParser.parseOutputData(minMaxLogic.getStartMoveData());
+        return DataParser.parseOutputData(mctsLogic.getStartMoveData());
     }
 
     private String makeMove(String moveData) {
-        Element optimalMove = minMaxLogic.getOptimalMoveData(DataParser.parseInputData(moveData));
+        Element optimalMove = mctsLogic.getOptimalMoveData(DataParser.parseInputData(moveData));
         if (optimalMove == null) {
             isGameRunning = false;
             return CallBackMessages.noMoveErrorCallBack;
         } else {
-            if (minMaxLogic.isGameEnd())
+            if (mctsLogic.isGameEnd())
                 isGameRunning = false;
             return DataParser.parseOutputData(optimalMove);
         }
