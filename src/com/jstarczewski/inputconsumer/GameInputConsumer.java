@@ -40,10 +40,13 @@ public class GameInputConsumer {
                 configCallBack.notify(CallBackMessages.nullErrorCallback);
             else
                 configCallBack.notify(controller.initBoard(input));
+        } catch (NumberFormatException e) {
+            configCallBack.notify(CallBackMessages.dataFormatErrorCallback + e.getLocalizedMessage());
+            closeReader();
         } catch (IOException e) {
-            configCallBack.notify(CallBackMessages.ioErrorCallback + e.getMessage());
+            configCallBack.notify(CallBackMessages.ioErrorCallback + e.getLocalizedMessage());
+            closeReader();
         }
-
     }
 
     /**
@@ -56,8 +59,12 @@ public class GameInputConsumer {
                 blackSpotsCallBack.notify(CallBackMessages.nullErrorCallback);
             else
                 blackSpotsCallBack.notify(controller.initBlackSpots(input));
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            blackSpotsCallBack.notify(CallBackMessages.dataFormatErrorCallback + e.getLocalizedMessage());
+            closeReader();
         } catch (IOException e) {
-            blackSpotsCallBack.notify(CallBackMessages.ioErrorCallback);
+            blackSpotsCallBack.notify(CallBackMessages.ioErrorCallback + e.getLocalizedMessage());
+            closeReader();
         }
     }
 
@@ -70,12 +77,15 @@ public class GameInputConsumer {
             if (input == null) {
                 moveCallBack.notify(CallBackMessages.nullErrorCallback);
             } else {
-                long startTimne = System.currentTimeMillis();
+                long startTime = System.currentTimeMillis();
                 moveCallBack.notify(controller.responseBasedOnInput(input));
-                System.out.println(System.currentTimeMillis() - startTimne);
+                System.out.println(System.currentTimeMillis() - startTime);
             }
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            moveCallBack.notify(CallBackMessages.dataFormatErrorCallback + e.getLocalizedMessage());
+            closeReader();
         } catch (IOException e) {
-            moveCallBack.notify(CallBackMessages.ioErrorCallback);
+            moveCallBack.notify(CallBackMessages.ioErrorCallback + e.getLocalizedMessage());
         }
     }
 

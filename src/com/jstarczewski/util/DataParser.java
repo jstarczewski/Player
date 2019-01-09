@@ -1,7 +1,7 @@
 package com.jstarczewski.util;
 
 
-import com.jstarczewski.logic.mcts.board.Element;
+import com.jstarczewski.logic.Element;
 
 import java.util.ArrayList;
 
@@ -45,17 +45,15 @@ public class DataParser {
     }
 
     public static String parseOutputData(Element element) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("{");
-        stringBuilder.append((element.getX())/size);
-        stringBuilder.append(";");
-        stringBuilder.append(element.getX()-((element.getX()/size)*size));
-        stringBuilder.append("},{");
-        stringBuilder.append((element.getY())/size);
-        stringBuilder.append(";");
-        stringBuilder.append(element.getY()-((element.getY()/size)*size));
-        stringBuilder.append("}");
-        return stringBuilder.toString();
+        return "{" +
+                (element.getX()) / size +
+                ";" +
+                (element.getX() - ((element.getX() / size) * size)) +
+                "},{" +
+                (element.getY()) / size +
+                ";" +
+                (element.getY() - ((element.getY() / size) * size)) +
+                "}";
 
     }
 

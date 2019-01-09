@@ -3,7 +3,7 @@ package com.jstarczewski.logic.mcts;
 import com.jstarczewski.logic.Logic;
 import com.jstarczewski.logic.mcts.algorithm.MonteCarloTreeSearch;
 import com.jstarczewski.logic.mcts.board.Board;
-import com.jstarczewski.logic.mcts.board.Element;
+import com.jstarczewski.logic.Element;
 import com.jstarczewski.util.DataParser;
 
 import java.util.ArrayList;
@@ -14,15 +14,15 @@ public class MCTSLogic implements Logic {
     private Board board;
     private int player = 1;
 
-    public MCTSLogic(MonteCarloTreeSearch monteCarloTreeSearch) {
+    public MCTSLogic(Board board, MonteCarloTreeSearch monteCarloTreeSearch) {
         this.monteCarloTreeSearch = monteCarloTreeSearch;
-
+        this.board = board;
     }
 
     @Override
     public void initSize(int size) {
         DataParser.size = size;
-        board = new Board(size);
+        board.setSize(size);
     }
 
     @Override
@@ -38,8 +38,9 @@ public class MCTSLogic implements Logic {
     }
 
     @Override
-    public ArrayList<Element> getStartMoveData() {
-        return null;
+    public Element getStartMoveData() {
+        board = monteCarloTreeSearch.findNextMove(board, player);
+        return board.getLastMove();
     }
 
     @Override

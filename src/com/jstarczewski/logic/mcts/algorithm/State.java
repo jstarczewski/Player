@@ -2,7 +2,7 @@ package com.jstarczewski.logic.mcts.algorithm;
 
 
 import com.jstarczewski.logic.mcts.board.Board;
-import com.jstarczewski.logic.mcts.board.Element;
+import com.jstarczewski.logic.Element;
 
 import java.util.HashSet;
 
@@ -15,7 +15,6 @@ public class State {
 
     public State() {
         board = new Board();
-
     }
 
     public State(State state) {

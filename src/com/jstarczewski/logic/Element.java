@@ -1,6 +1,4 @@
-package com.jstarczewski.logic.mcts.board;
-
-import java.util.Objects;
+package com.jstarczewski.logic;
 
 public class Element {
 
