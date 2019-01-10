@@ -1,0 +1,3 @@
+333333
+jstar krol
+java -jar 333333.jar

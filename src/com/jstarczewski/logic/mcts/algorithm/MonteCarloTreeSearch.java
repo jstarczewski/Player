@@ -14,13 +14,12 @@ public class MonteCarloTreeSearch {
     private int opponent;
 
     public MonteCarloTreeSearch() {
-        this.level = 15;
+        this.level = 5;
     }
 
     public Board findNextMove(Board board, int playerNo) {
         long start = System.currentTimeMillis();
-        long end = start + 400;
-        //10 * getMillisForCurrentLevel();
+        long end = start + 3 * getMillisForCurrentLevel();
 
         opponent = 3 - playerNo;
         Tree tree = new Tree();

@@ -95,9 +95,7 @@ public class GameInputConsumer {
             if (input == null) {
                 moveCallBack.notify(CallBackMessages.nullErrorCallback);
             } else {
-                long startTime = System.currentTimeMillis();
                 moveCallBack.notify(controller.responseBasedOnInput(input));
-                System.out.println(System.currentTimeMillis() - startTime);
             }
         } catch (NumberFormatException e) {
             moveCallBack.notify(CallBackMessages.dataFormatErrorCallback + e.getLocalizedMessage());
