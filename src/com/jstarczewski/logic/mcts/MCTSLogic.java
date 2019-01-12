@@ -7,14 +7,19 @@ import com.jstarczewski.logic.Element;
 import com.jstarczewski.util.DataParser;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeoutException;
 
 public class MCTSLogic implements Logic {
 
     private MonteCarloTreeSearch monteCarloTreeSearch;
     private Board board;
     private int player = 1;
+    private ExecutorService executorService;
 
-    public MCTSLogic(Board board, MonteCarloTreeSearch monteCarloTreeSearch) {
+    public MCTSLogic(ExecutorService executorService, Board board, MonteCarloTreeSearch monteCarloTreeSearch) {
+        this.executorService = executorService;
         this.monteCarloTreeSearch = monteCarloTreeSearch;
         this.board = board;
     }
@@ -31,14 +36,16 @@ public class MCTSLogic implements Logic {
     }
 
     @Override
-    public Element getOptimalMoveData(ArrayList<Element> coordinates) {
-        board.performMove(player, DataParser.parseInputDataToElement(coordinates));
-        if (board.getMoves().size() > 1200) {
-            board = Reverse.reverseMove(board, DataParser.parseInputDataToElement(coordinates), player);
+    public Element getOptimalMoveData(Element element) {
+
+        board.performMove(player, element);
+        if (board.getMoves().size() > 800) {
+            board = Reverse.reverseMove(board, element, player);
         } else {
             board = monteCarloTreeSearch.findNextMove(board, player);
         }
         return board.getLastMove();
+
     }
 
     @Override
@@ -50,6 +57,12 @@ public class MCTSLogic implements Logic {
             board = monteCarloTreeSearch.findNextMove(board, player);
         }
         return board.getLastMove();
+    }
+
+    private Future<Board> getOptimalBoard() {
+        return executorService.submit(() -> {
+            return monteCarloTreeSearch.findNextMove(this.board, this.player);
+        });
     }
 
     @Override

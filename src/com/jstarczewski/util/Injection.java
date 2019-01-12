@@ -1,13 +1,14 @@
 package com.jstarczewski.util;
 
+import com.jstarczewski.controller.GameController;
 import com.jstarczewski.logic.mcts.MCTSLogic;
 import com.jstarczewski.logic.mcts.algorithm.MonteCarloTreeSearch;
-import com.jstarczewski.controller.Controller;
 import com.jstarczewski.inputconsumer.GameInputConsumer;
 import com.jstarczewski.logic.mcts.board.Board;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.concurrent.Executors;
 
 public class Injection {
 
@@ -16,7 +17,8 @@ public class Injection {
      */
 
     public static GameInputConsumer provideInputConsumer() {
-        return GameInputConsumer.getInstance(new BufferedReader(new InputStreamReader(System.in)), new Controller(new MCTSLogic(new Board(), new MonteCarloTreeSearch())));
+        return GameInputConsumer.getInstance(new BufferedReader(new InputStreamReader(System.in)),
+                new GameController(new MCTSLogic(Executors.newSingleThreadExecutor() ,new Board(), new MonteCarloTreeSearch())));
     }
 
 }

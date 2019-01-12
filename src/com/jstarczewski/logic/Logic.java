@@ -13,7 +13,8 @@ public interface Logic {
 
     boolean isGameEnd();
 
-    Element getOptimalMoveData(ArrayList<Element> coordinates);
+    Element getOptimalMoveData(Element element);
 
     void setPlayer(int player);
+
 }

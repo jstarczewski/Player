@@ -1,6 +1,6 @@
 package com.jstarczewski.inputconsumer;
 
-import com.jstarczewski.controller.Controller;
+import com.jstarczewski.controller.GameController;
 import com.jstarczewski.util.CallBackMessages;
 
 import java.io.BufferedReader;
@@ -10,21 +10,21 @@ import java.util.NoSuchElementException;
 public class GameInputConsumer {
 
     private BufferedReader bufferedReader;
-    private Controller controller;
+    private GameController gameController;
     private static GameInputConsumer INSTANCE = null;
 
     /**
      * Input is a Singleton, because we always want only one object to be working with BufferedReader, so less NullPointerExceptions
      * will happen, because there wont be a situation when two object having two BufferedReaders will access same data.
      * <p>
-     * GameInputConsumer is responsible for consuming data from System.in, passing it to controller and then sending CallBack message
+     * GameInputConsumer is responsible for consuming data from System.in, passing it to gameController and then sending CallBack message
      * to our Main class
      */
 
     // Simple Singleton
-    public static synchronized GameInputConsumer getInstance(BufferedReader bufferedReader, Controller controller) {
+    public static synchronized GameInputConsumer getInstance(BufferedReader bufferedReader, GameController gameController) {
         if (INSTANCE == null)
-            INSTANCE = new GameInputConsumer(bufferedReader, controller);
+            INSTANCE = new GameInputConsumer(bufferedReader, gameController);
         return INSTANCE;
     }
 
@@ -40,7 +40,7 @@ public class GameInputConsumer {
             if (input == null)
                 configCallBack.notify(CallBackMessages.nullErrorCallback);
             else
-                configCallBack.notify(controller.initBoard(input));
+                configCallBack.notify(gameController.initBoard(input));
         } catch (NumberFormatException e) {
             configCallBack.notify(CallBackMessages.dataFormatErrorCallback + e.getLocalizedMessage());
             closeReader();
@@ -68,7 +68,7 @@ public class GameInputConsumer {
             if (input == null)
                 blackSpotsCallBack.notify(CallBackMessages.nullErrorCallback);
             else
-                blackSpotsCallBack.notify(controller.initBlackSpots(input));
+                blackSpotsCallBack.notify(gameController.initBlackSpots(input));
         } catch (NumberFormatException e) {
             blackSpotsCallBack.notify(CallBackMessages.dataFormatErrorCallback + e.getLocalizedMessage());
             closeReader();
@@ -95,20 +95,20 @@ public class GameInputConsumer {
             if (input == null) {
                 moveCallBack.notify(CallBackMessages.nullErrorCallback);
             } else {
-                moveCallBack.notify(controller.responseBasedOnInput(input));
+                moveCallBack.notify(gameController.responseBasedOnInput(input));
             }
         } catch (NumberFormatException e) {
             moveCallBack.notify(CallBackMessages.dataFormatErrorCallback + e.getLocalizedMessage());
             closeReader();
-            controller.stopGame();
+            gameController.stopGame();
         } catch (IndexOutOfBoundsException e) {
             moveCallBack.notify(CallBackMessages.arrayIndexOutOfBoundErrorCallback + e.getLocalizedMessage());
             closeReader();
-            controller.stopGame();
+            gameController.stopGame();
         } catch (NoSuchElementException e) {
-            moveCallBack.notify(CallBackMessages.noSuchMoveAvailableErrorCallback + e.getLocalizedMessage());
+          //  moveCallBack.notify(CallBackMessages.noMoveErrorCallBack);
             closeReader();
-            controller.stopGame();
+            gameController.stopGame();
         } catch (IOException e) {
             moveCallBack.notify(CallBackMessages.ioErrorCallback + e.getLocalizedMessage());
         }
@@ -121,7 +121,7 @@ public class GameInputConsumer {
     public void startGame(BaseCallBack.MoveCallBack moveCallBack) {
         do
             consumeMove(moveCallBack);
-        while (controller.isGameRunning());
+        while (gameController.isGameRunning());
         closeReader();
     }
 
@@ -136,8 +136,8 @@ public class GameInputConsumer {
         }
     }
 
-    private GameInputConsumer(BufferedReader bufferedReader, Controller controller) {
+    private GameInputConsumer(BufferedReader bufferedReader, GameController gameController) {
         this.bufferedReader = bufferedReader;
-        this.controller = controller;
+        this.gameController = gameController;
     }
 }

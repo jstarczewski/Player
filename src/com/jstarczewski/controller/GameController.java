@@ -10,13 +10,15 @@ import com.jstarczewski.util.DataParser;
  * controller class is responsible for 'controlling' what is going on based on input received from GameInputConsumer
  */
 
-public class Controller {
+public class GameController {
 
     private Logic mctsLogic;
+    private static final int PLAYER_1 = 1;
+    private static final int PLAYER_2 = 1;
 
     private boolean isGameRunning = false;
 
-    public Controller(Logic mctsLogic) {
+    public GameController(Logic mctsLogic) {
         this.mctsLogic = mctsLogic;
     }
 
@@ -31,11 +33,14 @@ public class Controller {
     }
 
     private String makeStartMove() {
+        mctsLogic.setPlayer(PLAYER_1);
         return DataParser.parseOutputData(mctsLogic.getStartMoveData());
     }
 
     private String makeMove(String moveData) {
-        Element optimalMove = mctsLogic.getOptimalMoveData(DataParser.parseInputData(moveData));
+        mctsLogic.setPlayer(PLAYER_2);
+        long time = System.currentTimeMillis();
+        Element optimalMove = mctsLogic.getOptimalMoveData(DataParser.parseInputDataToElement(moveData));
         if (optimalMove == null) {
             isGameRunning = false;
             return CallBackMessages.noMoveErrorCallBack;
