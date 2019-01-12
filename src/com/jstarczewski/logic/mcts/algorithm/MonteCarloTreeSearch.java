@@ -6,28 +6,31 @@ import com.jstarczewski.logic.mcts.tree.Tree;
 
 import java.util.HashSet;
 
+
 public class MonteCarloTreeSearch {
 
 
-    private static final int WIN_SCORE = 10;
     private int level;
+    private static final int WIN_SCORE = 100;
     private int opponent;
+    private long start = System.currentTimeMillis();
+    private Board bestBoard;
+    Node rootNode;
 
     public MonteCarloTreeSearch() {
         this.level = 5;
     }
 
     public Board findNextMove(Board board, int playerNo) {
-        long start = System.currentTimeMillis();
-        long end = start + 3 * getMillisForCurrentLevel();
+        long end = start + 10 * getMillisForCurrentLevel();
 
         opponent = 3 - playerNo;
         Tree tree = new Tree();
-        Node rootNode = tree.getRoot();
+        rootNode = tree.getRoot();
         rootNode.getState().setBoard(board);
         rootNode.getState().setPlayerNo(opponent);
 
-        while (System.currentTimeMillis() < end) {
+        while (!Thread.currentThread().isInterrupted()) {
             // Phase 1 - Selection
             Node promisingNode = selectPromisingNode(rootNode);
             // Phase 2 - Expansion
@@ -36,15 +39,21 @@ public class MonteCarloTreeSearch {
 
             // Phase 3 - Simulation
             Node nodeToExplore = promisingNode;
-
+            if (Thread.currentThread().isInterrupted())
+                break;
             if (promisingNode.getChildHashSet().size() > 0) {
                 nodeToExplore = promisingNode.getChildNode();
             }
+
+            if (Thread.currentThread().isInterrupted())
+                break;
             int playoutResult = simulatePlayout(nodeToExplore);
             // Phase 4 - Update
+
+            if (Thread.currentThread().isInterrupted())
+                break;
             backPropogation(nodeToExplore, playoutResult);
         }
-
         Node winnerNode = rootNode.getChildWithMaxScore();
         tree.setRoot(winnerNode);
         return winnerNode.getState().getBoard();
@@ -52,10 +61,14 @@ public class MonteCarloTreeSearch {
 
     private Node selectPromisingNode(Node rootNode) {
         Node node = rootNode;
-        while (node.getChildHashSet().size() != 0) {
+        while (node.getChildHashSet().size() > 0 || !Thread.currentThread().isInterrupted()) {
             node = UCT.findBestNodeWithUCT(node);
         }
         return node;
+    }
+
+    public Board getBackUpBoard() {
+        return rootNode.getState().getBoard();
     }
 
     private void expandNode(Node node) {
@@ -70,10 +83,11 @@ public class MonteCarloTreeSearch {
 
     private void backPropogation(Node nodeToExplore, int playerNo) {
         Node tempNode = nodeToExplore;
-        while (tempNode != null) {
+        while (tempNode != null || !Thread.currentThread().isInterrupted()) {
             tempNode.getState().incrementVisit();
-            if (tempNode.getState().getPlayerNo() == playerNo)
+            if (tempNode.getState().getPlayerNo() == playerNo) {
                 tempNode.getState().addScore(WIN_SCORE);
+            }
             tempNode = tempNode.getParent();
         }
     }

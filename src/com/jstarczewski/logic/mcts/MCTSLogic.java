@@ -7,19 +7,15 @@ import com.jstarczewski.logic.Element;
 import com.jstarczewski.util.DataParser;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.*;
 
 public class MCTSLogic implements Logic {
 
     private MonteCarloTreeSearch monteCarloTreeSearch;
     private Board board;
     private int player = 1;
-    private ExecutorService executorService;
 
-    public MCTSLogic(ExecutorService executorService, Board board, MonteCarloTreeSearch monteCarloTreeSearch) {
-        this.executorService = executorService;
+    public MCTSLogic(Board board, MonteCarloTreeSearch monteCarloTreeSearch) {
         this.monteCarloTreeSearch = monteCarloTreeSearch;
         this.board = board;
     }
@@ -39,30 +35,42 @@ public class MCTSLogic implements Logic {
     public Element getOptimalMoveData(Element element) {
 
         board.performMove(player, element);
+        /*
         if (board.getMoves().size() > 800) {
             board = Reverse.reverseMove(board, element, player);
         } else {
             board = monteCarloTreeSearch.findNextMove(board, player);
-        }
-        return board.getLastMove();
+        }*/
 
+        Future<Board> boardFuture = Executors.newSingleThreadExecutor().submit(() -> monteCarloTreeSearch.findNextMove(board, player));
+        try {
+            boardFuture.get(350, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            board = Reverse.reverseMove(board, element, player);
+        } catch (ExecutionException e) {
+            board = Reverse.reverseMove(board, element, player);
+        } catch (TimeoutException e) {
+            board = Reverse.reverseMove(board, element, player);
+        } finally {
+            return board.getLastMove();
+        }
     }
 
     @Override
     public Element getStartMoveData() {
-        if (board.getMoves().size() > 1200) {
-            Element e = board.getMoves().iterator().next();
-            board.performMove(player, e);
-        } else {
-            board = monteCarloTreeSearch.findNextMove(board, player);
+        Element element = new Element(0, 0);
+        Future<Board> boardFuture = Executors.newSingleThreadExecutor().submit(() -> monteCarloTreeSearch.findNextMove(board, player));
+        try {
+            boardFuture.get(250, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            board = Reverse.reverseMove(board, element, player);
+        } catch (ExecutionException e) {
+            board = Reverse.reverseMove(board, element, player);
+        } catch (TimeoutException e) {
+            board = Reverse.reverseMove(board, element, player);
+        } finally {
+            return board.getLastMove();
         }
-        return board.getLastMove();
-    }
-
-    private Future<Board> getOptimalBoard() {
-        return executorService.submit(() -> {
-            return monteCarloTreeSearch.findNextMove(this.board, this.player);
-        });
     }
 
     @Override

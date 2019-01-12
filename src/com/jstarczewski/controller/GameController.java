@@ -39,6 +39,7 @@ public class GameController {
 
     private String makeMove(String moveData) {
         mctsLogic.setPlayer(PLAYER_2);
+
         long time = System.currentTimeMillis();
         Element optimalMove = mctsLogic.getOptimalMoveData(DataParser.parseInputDataToElement(moveData));
         if (optimalMove == null) {

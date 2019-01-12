@@ -1,5 +1,7 @@
 package com.jstarczewski.logic;
 
+import java.util.Objects;
+
 public class Element {
 
     private int x;
@@ -45,6 +47,6 @@ public class Element {
 
     @Override
     public int hashCode() {
-        return x + y + 13;
+        return Objects.hash(x,y);
     }
 }

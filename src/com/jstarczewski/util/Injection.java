@@ -8,7 +8,6 @@ import com.jstarczewski.logic.mcts.board.Board;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.concurrent.Executors;
 
 public class Injection {
 
@@ -18,7 +17,7 @@ public class Injection {
 
     public static GameInputConsumer provideInputConsumer() {
         return GameInputConsumer.getInstance(new BufferedReader(new InputStreamReader(System.in)),
-                new GameController(new MCTSLogic(Executors.newSingleThreadExecutor() ,new Board(), new MonteCarloTreeSearch())));
+                new GameController(new MCTSLogic(new Board(), new MonteCarloTreeSearch())));
     }
 
 }

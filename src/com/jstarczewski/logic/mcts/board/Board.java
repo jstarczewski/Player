@@ -4,6 +4,7 @@ import com.jstarczewski.logic.Element;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Objects;
 
 public class Board {
 
@@ -15,7 +16,6 @@ public class Board {
 
     public Board() {
     }
-
     public Board(int size) {
         this.size = size;
         this.moves = new HashSet<>();
@@ -36,7 +36,6 @@ public class Board {
                 aj = head - size < 0 ? i * size + j - size + (size * size) : i * size + j - size;
                 moves.add(new Element(head, ai));
                 moves.add(new Element(head, aj));
-
             }
         }
     }
@@ -50,7 +49,7 @@ public class Board {
 
     public void performMove(int lastPlayer, Element move) {
         this.lastPlayer = lastPlayer;
-        this.lastMove = move;
+        this.lastMove = new Element(move.getX(), move.getY());
         moves.removeIf(element -> (element.getX() == move.getX()) || (element.getY() == move.getY() || element.getX() == move.getY()) || (element.getY() == move.getX()));
     }
 
@@ -89,4 +88,19 @@ public class Board {
         this.lastPlayer = lastPlayer;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Board board = (Board) o;
+        return lastPlayer == board.lastPlayer &&
+                size == board.size &&
+                Objects.equals(moves, board.moves) &&
+                Objects.equals(lastMove, board.lastMove);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(moves, lastPlayer, lastMove, size);
+    }
 }
