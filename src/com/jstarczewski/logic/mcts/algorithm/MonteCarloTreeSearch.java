@@ -69,9 +69,6 @@ public class MonteCarloTreeSearch {
             newNode.getState().setPlayerNo(node.getState().getOpponent());
             node.getChildHashSet().add(newNode);
         }
-        /*
-        possibleStates.forEach(state -> {
-        });*/
     }
 
     private void backPropogation(Node nodeToExplore, int playerNo) {

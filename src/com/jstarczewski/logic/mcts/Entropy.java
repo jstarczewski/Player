@@ -3,7 +3,7 @@ package com.jstarczewski.logic.mcts;
 import com.jstarczewski.logic.Element;
 import com.jstarczewski.logic.mcts.board.Board;
 
-public class Reverse {
+public class Entropy {
 
     public static Board reverseMove(Board board, Element element, int player) {
 

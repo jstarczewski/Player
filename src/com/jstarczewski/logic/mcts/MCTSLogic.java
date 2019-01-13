@@ -37,23 +37,14 @@ public class MCTSLogic implements Logic {
         try {
             board.performMove(player, element);
             if (board.getMoves().size() > 800) {
-                board = Reverse.reverseMove(board, element, player);
+                board = Entropy.reverseMove(board, element, player);
             } else {
                 board = monteCarloTreeSearch.findNextMove(board, player);
             }
         } catch (NoSuchElementException e) {
-            board = Reverse.reverseMove(board, element, player);
+            board = Entropy.reverseMove(board, element, player);
         }
         return board.getLastMove();
-/*
-        Future<Board> boardFuture = Executors.newSingleThreadExecutor().submit(() -> monteCarloTreeSearch.findNextMove(board, player));
-        try {
-            boardFuture.get(350, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException | TimeoutException | ExecutionException e) {
-            board = Reverse.reverseMove(board, element, player);
-        } finally {
-            return board.getLastMove();
-        }*/
     }
 
     @Override
@@ -61,12 +52,12 @@ public class MCTSLogic implements Logic {
         Element element = new Element(0, 0);
         try {
             if (board.getMoves().size() > 800) {
-                board = Reverse.reverseMove(board, element, player);
+                board = Entropy.reverseMove(board, element, player);
             } else {
                 board = monteCarloTreeSearch.findNextMove(board, player);
             }
         } catch (NoSuchElementException e) {
-            board = Reverse.reverseMove(board, element, player);
+            board = Entropy.reverseMove(board, element, player);
         }
         return board.getLastMove();
     }
