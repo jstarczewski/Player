@@ -11,10 +11,6 @@ import java.io.InputStreamReader;
 
 public class Injection {
 
-    /**
-     * Simple data injection class providing everything what is needed to build GameInputConsumer object
-     */
-
     public static GameInputConsumer provideInputConsumer() {
         return GameInputConsumer.getInstance(new BufferedReader(new InputStreamReader(System.in)),
                 new GameController(new MCTSLogic(new Board(), new MonteCarloTreeSearch())));

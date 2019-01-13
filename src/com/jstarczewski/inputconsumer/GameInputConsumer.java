@@ -13,27 +13,12 @@ public class GameInputConsumer {
     private GameController gameController;
     private static GameInputConsumer INSTANCE = null;
 
-    /**
-     * Input is a Singleton, because we always want only one object to be working with BufferedReader, so less NullPointerExceptions
-     * will happen, because there wont be a situation when two object having two BufferedReaders will access same data.
-     * <p>
-     * GameInputConsumer is responsible for consuming data from System.in, passing it to gameController and then sending CallBack message
-     * to our Main class
-     */
-
-    // Simple Singleton
     public static synchronized GameInputConsumer getInstance(BufferedReader bufferedReader, GameController gameController) {
         if (INSTANCE == null)
             INSTANCE = new GameInputConsumer(bufferedReader, gameController);
         return INSTANCE;
     }
 
-
-    /**
-     * consumeConfigMessage tries to read line from System.in and after that checks whether it is null.
-     * If the value is null or exception occurred, appropriate CallBack is send to Main class
-     * If everything seems alright board size is set and CallBack telling that everything went alright is send to Main class
-     */
     public void consumeConfigMessage(BaseCallBack.ConfigCallBack configCallBack) {
         try {
             String input = bufferedReader.readLine();
@@ -59,9 +44,6 @@ public class GameInputConsumer {
 
     }
 
-    /**
-     * Same as consumeConfigMessage, but fills board with black/dead spots
-     */
     public void consumeBlackSpotsConfiguration(BaseCallBack.BlackSpotsCallBack blackSpotsCallBack) {
         try {
             String input = bufferedReader.readLine();
@@ -86,9 +68,6 @@ public class GameInputConsumer {
         }
     }
 
-    /**
-     * This methods sends CallBack with move or Error depending on the input read
-     */
     private void consumeMove(BaseCallBack.MoveCallBack moveCallBack) {
         try {
             String input = bufferedReader.readLine();
@@ -114,10 +93,6 @@ public class GameInputConsumer {
         }
     }
 
-    /**
-     * Start the game and sends CallBacks with move message, after game is finished (flag GameRunning == false) it closes the
-     * reader
-     */
     public void startGame(BaseCallBack.MoveCallBack moveCallBack) {
         do
             consumeMove(moveCallBack);
@@ -125,9 +100,6 @@ public class GameInputConsumer {
         closeReader();
     }
 
-    /**
-     * Closes the BufferedReader
-     */
     private void closeReader() {
         try {
             bufferedReader.close();

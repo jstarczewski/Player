@@ -16,6 +16,7 @@ public class Board {
 
     public Board() {
     }
+
     public Board(int size) {
         this.size = size;
         this.moves = new HashSet<>();
