@@ -7,7 +7,7 @@ import com.jstarczewski.logic.Element;
 import com.jstarczewski.util.DataParser;
 
 import java.util.ArrayList;
-import java.util.concurrent.*;
+import java.util.NoSuchElementException;
 
 public class MCTSLogic implements Logic {
 
@@ -34,43 +34,41 @@ public class MCTSLogic implements Logic {
     @Override
     public Element getOptimalMoveData(Element element) {
 
-        board.performMove(player, element);
-        /*
-        if (board.getMoves().size() > 800) {
+        try {
+            board.performMove(player, element);
+            if (board.getMoves().size() > 800) {
+                board = Reverse.reverseMove(board, element, player);
+            } else {
+                board = monteCarloTreeSearch.findNextMove(board, player);
+            }
+        } catch (NoSuchElementException e) {
             board = Reverse.reverseMove(board, element, player);
-        } else {
-            board = monteCarloTreeSearch.findNextMove(board, player);
-        }*/
-
+        }
+        return board.getLastMove();
+/*
         Future<Board> boardFuture = Executors.newSingleThreadExecutor().submit(() -> monteCarloTreeSearch.findNextMove(board, player));
         try {
             boardFuture.get(350, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            board = Reverse.reverseMove(board, element, player);
-        } catch (ExecutionException e) {
-            board = Reverse.reverseMove(board, element, player);
-        } catch (TimeoutException e) {
+        } catch (InterruptedException | TimeoutException | ExecutionException e) {
             board = Reverse.reverseMove(board, element, player);
         } finally {
             return board.getLastMove();
-        }
+        }*/
     }
 
     @Override
     public Element getStartMoveData() {
         Element element = new Element(0, 0);
-        Future<Board> boardFuture = Executors.newSingleThreadExecutor().submit(() -> monteCarloTreeSearch.findNextMove(board, player));
         try {
-            boardFuture.get(250, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
+            if (board.getMoves().size() > 800) {
+                board = Reverse.reverseMove(board, element, player);
+            } else {
+                board = monteCarloTreeSearch.findNextMove(board, player);
+            }
+        } catch (NoSuchElementException e) {
             board = Reverse.reverseMove(board, element, player);
-        } catch (ExecutionException e) {
-            board = Reverse.reverseMove(board, element, player);
-        } catch (TimeoutException e) {
-            board = Reverse.reverseMove(board, element, player);
-        } finally {
-            return board.getLastMove();
         }
+        return board.getLastMove();
     }
 
     @Override

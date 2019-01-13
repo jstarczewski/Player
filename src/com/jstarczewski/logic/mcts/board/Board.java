@@ -24,6 +24,7 @@ public class Board {
 
     public Board(Board board) {
         this.moves = new HashSet<>(board.getMoves());
+        this.lastMove = board.getLastMove();
     }
 
     private void addPossibleMoves() {

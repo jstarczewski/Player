@@ -15,12 +15,7 @@ public class Main {
         /**
          * GameInputConsumer tries to consume ConfigMessage and returns CallBackMessage depends on the action
          * */
-        gameInputConsumer.consumeConfigMessage(new BaseCallBack.ConfigCallBack() {
-            @Override
-            public void notify(String callBack) {
-               System.out.println(callBack);
-            }
-        });
+        gameInputConsumer.consumeConfigMessage(System.out::println);
 
         /**
          * GameInputConsumer tries to consume BlackSpotConfiguration and returns CallBackMessage depends on the action

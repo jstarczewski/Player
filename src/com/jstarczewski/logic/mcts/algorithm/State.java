@@ -30,15 +30,15 @@ public class State {
 
     public HashSet<State> getAllPossibleStates() {
         HashSet<State> possibleStates = new HashSet<>();
-        HashSet<Element> availableMoves = this.board.getMoves();
-        availableMoves.forEach(m -> {
+        HashSet<Element> availableMoves = new HashSet<>(board.getMoves());
+        for (Element m : availableMoves) {
 
             State newState = new State(this.board);
             newState.setPlayerNo(3 - this.playerNo);
             newState.getBoard().performMove(newState.getPlayerNo(), m);
             possibleStates.add(newState);
 
-        });
+        }
         return possibleStates;
     }
 
