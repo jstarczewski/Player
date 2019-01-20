@@ -1,7 +1,7 @@
-package com.jstarczewski.logic.mcts;
+package com.jstarczewski.src.logic.mcts;
 
-import com.jstarczewski.logic.Element;
-import com.jstarczewski.logic.mcts.board.Board;
+import com.jstarczewski.src.logic.Element;
+import com.jstarczewski.src.logic.mcts.board.Board;
 
 public class Entropy {
 

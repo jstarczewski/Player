@@ -7,10 +7,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67124791-708d-400e-b3ab-53408b21fed1" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/jstarczewski/tests/GameControllerTest.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/MCTSLogic.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/MCTSLogic.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/Reverse.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/Entropy.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/algorithm/MonteCarloTreeSearch.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/algorithm/MonteCarloTreeSearch.java" />
+      <change beforePath="$PROJECT_DIR$/Player.iml" afterPath="$PROJECT_DIR$/Player.iml" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/Main.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/Main.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/controller/GameController.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/controller/GameController.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/inputconsumer/BaseCallBack.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/inputconsumer/BaseCallBack.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/inputconsumer/GameInputConsumer.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/inputconsumer/GameInputConsumer.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/Element.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/logic/Element.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/Logic.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/logic/Logic.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/Entropy.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/Entropy.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/MCTSLogic.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/MCTSLogic.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/algorithm/MonteCarloTreeSearch.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/algorithm/MonteCarloTreeSearch.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/algorithm/State.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/algorithm/State.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/algorithm/UCT.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/algorithm/UCT.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/board/Board.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/board/Board.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/tree/Node.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/tree/Node.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/tree/Tree.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/tree/Tree.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/util/CallBackMessages.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/util/CallBackMessages.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/util/DataParser.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/util/DataParser.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/jstarczewski/util/Injection.java" afterPath="$PROJECT_DIR$/src/com/jstarczewski/src/util/Injection.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,71 +54,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MonteCarloTreeSearch.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/algorithm/MonteCarloTreeSearch.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MCTSLogic.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/MCTSLogic.java">
+        <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/MCTSLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="570">
+              <caret line="38" column="42" lean-forward="false" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/util/DataParser.java">
+      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/controller/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
+            <state relative-caret-position="120">
+              <caret line="8" column="15" lean-forward="false" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CallBackMessages.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/util/CallBackMessages.java">
+      <file leaf-file-name="GameControllerTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/tests/GameControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Entropy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/Entropy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+            <state relative-caret-position="330">
+              <caret line="22" column="80" lean-forward="false" selection-start-line="22" selection-start-column="80" selection-end-line="22" selection-end-column="80" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Injection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/util/Injection.java">
+        <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/util/Injection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/board/Board.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="43" lean-forward="false" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+            <state relative-caret-position="225">
+              <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -115,6 +102,7 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -129,9 +117,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/jstarczewski/board/elements/Element.java" />
-        <option value="$PROJECT_DIR$/src/com/jstarczewski/board/elements/Elements.java" />
-        <option value="$PROJECT_DIR$/src/com/jstarczewski/board/elements/BlackSpot.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/board/elements/Block.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/board/elements/Brick.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/board/Element.java" />
@@ -155,7 +140,6 @@
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/MonteCarloTreeSearch.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/Board.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/tree/Node.java" />
-        <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/tree/Tree.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/board/Element.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/board/Moves.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/Algorithm.java" />
@@ -168,18 +152,22 @@
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/Logic.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/Reverse.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/algorithm/State.java" />
-        <option value="$PROJECT_DIR$/src/com/jstarczewski/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/jstarczewski/inputconsumer/GameInputConsumer.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/util/Injection.java" />
-        <option value="$PROJECT_DIR$/src/com/jstarczewski/util/DataParser.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/util/CallBackMessages.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/Element.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/board/Board.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/algorithm/UCT.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/inputconsumer/BaseCallBack.java" />
-        <option value="$PROJECT_DIR$/src/com/jstarczewski/controller/GameController.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/MCTSLogic.java" />
+        <option value="$PROJECT_DIR$/src/com/jstarczewski/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/jstarczewski/inputconsumer/GameInputConsumer.java" />
         <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/algorithm/MonteCarloTreeSearch.java" />
+        <option value="$PROJECT_DIR$/src/com/jstarczewski/util/DataParser.java" />
+        <option value="$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/tree/Tree.java" />
+        <option value="$PROJECT_DIR$/src/com/jstarczewski/controller/GameController.java" />
+        <option value="$PROJECT_DIR$/src/com/jstarczewski/controller/GameControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/com/jstarczewski/src/util/Injection.java" />
+        <option value="$PROJECT_DIR$/src/com/jstarczewski/tests/GameControllerTest.java" />
       </list>
     </option>
   </component>
@@ -196,9 +184,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1057" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectView">
     <navigator currentView="PackagesPane" proportions="" version="1">
@@ -215,7 +204,41 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Player" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Player" type="616d4139:PackageViewModuleNode" />
+              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Player" type="616d4139:PackageViewModuleNode" />
+              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
+              <item name="src" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Player" type="616d4139:PackageViewModuleNode" />
+              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
+              <item name="src" type="1f31426a:PackageElementNode" />
+              <item name="util" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Player" type="616d4139:PackageViewModuleNode" />
+              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
+              <item name="tests" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -228,6 +251,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -250,77 +274,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Player" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Player" type="616d4139:PackageViewModuleNode" />
-              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Player" type="616d4139:PackageViewModuleNode" />
-              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
-              <item name="controller" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Player" type="616d4139:PackageViewModuleNode" />
-              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
-              <item name="inputconsumer" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Player" type="616d4139:PackageViewModuleNode" />
-              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
-              <item name="logic" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Player" type="616d4139:PackageViewModuleNode" />
-              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
-              <item name="logic" type="1f31426a:PackageElementNode" />
-              <item name="mcts" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Player" type="616d4139:PackageViewModuleNode" />
-              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
-              <item name="logic" type="1f31426a:PackageElementNode" />
-              <item name="mcts" type="1f31426a:PackageElementNode" />
-              <item name="algorithm" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Player" type="616d4139:PackageViewModuleNode" />
-              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
-              <item name="logic" type="1f31426a:PackageElementNode" />
-              <item name="mcts" type="1f31426a:PackageElementNode" />
-              <item name="board" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Player" type="616d4139:PackageViewModuleNode" />
-              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
-              <item name="logic" type="1f31426a:PackageElementNode" />
-              <item name="mcts" type="1f31426a:PackageElementNode" />
-              <item name="tree" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Player" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Player" type="616d4139:PackageViewModuleNode" />
-              <item name="com.jstarczewski" type="1f31426a:PackageElementNode" />
-              <item name="util" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -331,12 +284,23 @@
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="player" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.jstarczewski.controller" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.jstarczewski.logic.mcts" />
     </key>
@@ -356,7 +320,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.GameControllerTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="com.jstarczewski.Main" />
@@ -373,6 +337,31 @@
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
     </configuration>
+    <configuration name="GameControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.jstarczewski.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Player" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.jstarczewski.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.jstarczewski.tests.GameControllerTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -388,9 +377,14 @@
       <envs />
       <method />
     </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.GameControllerTest" />
+    </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.GameControllerTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -441,12 +435,20 @@
       <workItem from="1547400098536" duration="4155000" />
       <workItem from="1547404757367" duration="4762000" />
       <workItem from="1547413329580" duration="1757000" />
-      <workItem from="1547417397877" duration="1908000" />
+      <workItem from="1547417397877" duration="3307000" />
+      <workItem from="1547452541422" duration="2097000" />
+      <workItem from="1547941760769" duration="15000" />
+      <workItem from="1547941981712" duration="1308000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="GameControllerTest - 2019.01.20 at 01h 13m 30s.xml">
+      <configuration name="GameControllerTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162275000" />
+    <option name="totallyTimeSpent" value="167094000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -462,13 +464,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.4944" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32795697" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36567163" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16791044" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.4944" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.4688" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -481,6 +482,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5312" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.4944" order="3" side_tool="false" content_ui="tabs" />
@@ -549,121 +551,15 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Player.iml">
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/algorithm/MonteCarloTreeSearch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/inputconsumer/InputConsumerCallbacks/BlocksFilledAtStartupCallback.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/inputconsumer/Input.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/inputconsumer/InputConsumerCallbacks/ConfigConsumerCallback.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/inputconsumer/InputConsumerCallbacks/ConsumeCallback.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/board/elements/BlackSpot.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/board/elements/Element.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/board/elements/Elements.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/board/elements/Block.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/board/elements/Brick.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/java/util/function/Consumer.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/board/Element.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/minmaxmove/Node.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/minmaxmove/Tree.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/Tree.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/TreeM.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/board/Block.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/Node.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/MinMaxLogic.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/board/Board.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/minmax/MinMax.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/java/util/ArrayList.java" />
-    <entry file="jrt://C:/Program Files/Java/jdk-9.0.4!/java.base/sun/util/PreHashedMap.class" />
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/java.base/java/util/Collection.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/Algorithm.java" />
-    <entry file="file://$PROJECT_DIR$/../Algorithms/LinkedList/LinkedList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1233">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/controller/OnGameStartedCallback.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/OptimalMoveCallback.java" />
-    <entry file="file://$PROJECT_DIR$/../Algorithms/InsertSort/InsertSortProof.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Algorithms/InsertSort/InsertSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/FutureTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/Callable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="64" column="6" lean-forward="false" selection-start-line="64" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/Player/src/com/jstarczewski/logic/mcts/algorithm/State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1028">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/Player/src/com/jstarczewski/logic/mcts/algorithm/MonteCarloTreeSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-945">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="20" column="48" lean-forward="false" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/Logic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/Element.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/tree/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/tree/Tree.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/tree/Tree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="20" lean-forward="false" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
@@ -671,31 +567,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/algorithm/State.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/tree/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="1035">
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/algorithm/UCT.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/algorithm/State.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+        <state relative-caret-position="825">
+          <caret line="55" column="31" lean-forward="true" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/inputconsumer/GameInputConsumer.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="10" column="50" lean-forward="false" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/inputconsumer/BaseCallBack.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/MCTSLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="42" lean-forward="false" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/inputconsumer/BaseCallBack.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
@@ -703,15 +607,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/controller/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/Entropy.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/Entropy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
@@ -719,50 +615,130 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/util/Injection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/util/CallBackMessages.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/board/Board.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/util/DataParser.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/util/DataParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
+        <state relative-caret-position="645">
           <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/MCTSLogic.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/tree/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state relative-caret-position="1035">
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/algorithm/MonteCarloTreeSearch.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/algorithm/State.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        <state relative-caret-position="825">
+          <caret line="55" column="31" lean-forward="false" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/logic/mcts/board/Board.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="43" lean-forward="false" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+        <state relative-caret-position="150">
+          <caret line="10" column="50" lean-forward="false" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/inputconsumer/BaseCallBack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/Entropy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/board/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/algorithm/MonteCarloTreeSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/inputconsumer/GameInputConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="23" lean-forward="false" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/util/DataParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/tree/Tree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/util/Injection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/logic/mcts/MCTSLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="42" lean-forward="false" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/src/controller/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="15" lean-forward="false" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jstarczewski/tests/GameControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="80" lean-forward="false" selection-start-line="22" selection-start-column="80" selection-end-line="22" selection-end-column="80" />
           <folding />
         </state>
       </provider>

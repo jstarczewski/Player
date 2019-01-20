@@ -1,4 +1,4 @@
-package com.jstarczewski.util;
+package com.jstarczewski.src.util;
 
 public class CallBackMessages {
 

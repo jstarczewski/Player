@@ -1,6 +1,6 @@
-package com.jstarczewski.logic.mcts.tree;
+package com.jstarczewski.src.logic.mcts.tree;
 
-import com.jstarczewski.logic.mcts.algorithm.State;
+import com.jstarczewski.src.logic.mcts.algorithm.State;
 
 import java.util.*;
 

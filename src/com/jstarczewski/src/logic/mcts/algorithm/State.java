@@ -1,8 +1,8 @@
-package com.jstarczewski.logic.mcts.algorithm;
+package com.jstarczewski.src.logic.mcts.algorithm;
 
 
-import com.jstarczewski.logic.mcts.board.Board;
-import com.jstarczewski.logic.Element;
+import com.jstarczewski.src.logic.mcts.board.Board;
+import com.jstarczewski.src.logic.Element;
 
 import java.util.HashSet;
 

@@ -1,11 +1,12 @@
-package com.jstarczewski.inputconsumer;
+package com.jstarczewski.src.inputconsumer;
 
-import com.jstarczewski.controller.GameController;
-import com.jstarczewski.util.CallBackMessages;
+import com.jstarczewski.src.controller.GameController;
+import com.jstarczewski.src.util.CallBackMessages;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.NoSuchElementException;
+
 
 public class GameInputConsumer {
 

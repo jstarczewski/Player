@@ -1,10 +1,10 @@
-package com.jstarczewski.logic.mcts;
+package com.jstarczewski.src.logic.mcts;
 
-import com.jstarczewski.logic.Logic;
-import com.jstarczewski.logic.mcts.algorithm.MonteCarloTreeSearch;
-import com.jstarczewski.logic.mcts.board.Board;
-import com.jstarczewski.logic.Element;
-import com.jstarczewski.util.DataParser;
+import com.jstarczewski.src.logic.Logic;
+import com.jstarczewski.src.logic.mcts.algorithm.MonteCarloTreeSearch;
+import com.jstarczewski.src.logic.mcts.board.Board;
+import com.jstarczewski.src.logic.Element;
+import com.jstarczewski.src.util.DataParser;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -36,7 +36,7 @@ public class MCTSLogic implements Logic {
 
         try {
             board.performMove(player, element);
-            if (board.getMoves().size() > 800) {
+            if (board.getMoves().size() > 600) {
                 board = Entropy.reverseMove(board, element, player);
             } else {
                 board = monteCarloTreeSearch.findNextMove(board, player);
@@ -51,7 +51,7 @@ public class MCTSLogic implements Logic {
     public Element getStartMoveData() {
         Element element = new Element(0, 0);
         try {
-            if (board.getMoves().size() > 800) {
+            if (board.getMoves().size() > 600) {
                 board = Entropy.reverseMove(board, element, player);
             } else {
                 board = monteCarloTreeSearch.findNextMove(board, player);

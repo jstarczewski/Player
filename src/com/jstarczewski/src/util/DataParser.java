@@ -1,9 +1,10 @@
-package com.jstarczewski.util;
+package com.jstarczewski.src.util;
 
 
-import com.jstarczewski.logic.Element;
+import com.jstarczewski.src.logic.Element;
 
 import java.util.ArrayList;
+
 
 public class DataParser {
 
@@ -21,26 +22,8 @@ public class DataParser {
         return elements;
     }
 
-    public static String parseOutputData(ArrayList<Element> elements) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Element element : elements) {
-            stringBuilder.append("{");
-            stringBuilder.append(element.getX());
-            stringBuilder.append(";");
-            stringBuilder.append(element.getY());
-            stringBuilder.append("}");
-            stringBuilder.append(",");
-        }
-        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-        return stringBuilder.toString();
-    }
-
     public static Element parseInputDataToElement(String data) {
         return getCords(parseInputData(data));
-    }
-
-    public static Element parseInputDataToElement(ArrayList<Element> elements) {
-        return getCords(elements);
     }
 
     public static String parseOutputData(Element element) {

@@ -1,10 +1,10 @@
-package com.jstarczewski.util;
+package com.jstarczewski.src.util;
 
-import com.jstarczewski.controller.GameController;
-import com.jstarczewski.logic.mcts.MCTSLogic;
-import com.jstarczewski.logic.mcts.algorithm.MonteCarloTreeSearch;
-import com.jstarczewski.inputconsumer.GameInputConsumer;
-import com.jstarczewski.logic.mcts.board.Board;
+import com.jstarczewski.src.controller.GameController;
+import com.jstarczewski.src.logic.mcts.MCTSLogic;
+import com.jstarczewski.src.logic.mcts.algorithm.MonteCarloTreeSearch;
+import com.jstarczewski.src.inputconsumer.GameInputConsumer;
+import com.jstarczewski.src.logic.mcts.board.Board;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

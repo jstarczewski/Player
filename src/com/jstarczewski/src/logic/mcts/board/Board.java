@@ -1,6 +1,6 @@
-package com.jstarczewski.logic.mcts.board;
+package com.jstarczewski.src.logic.mcts.board;
 
-import com.jstarczewski.logic.Element;
+import com.jstarczewski.src.logic.Element;
 
 import java.util.ArrayList;
 import java.util.HashSet;

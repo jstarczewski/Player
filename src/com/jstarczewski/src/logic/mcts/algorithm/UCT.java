@@ -1,6 +1,6 @@
-package com.jstarczewski.logic.mcts.algorithm;
+package com.jstarczewski.src.logic.mcts.algorithm;
 
-import com.jstarczewski.logic.mcts.tree.Node;
+import com.jstarczewski.src.logic.mcts.tree.Node;
 
 import java.util.Collections;
 import java.util.Comparator;

@@ -1,9 +1,8 @@
-package com.jstarczewski.logic.mcts.tree;
+package com.jstarczewski.src.logic.mcts.tree;
 
 public class Tree {
 
-    public Node root;
-
+    Node root;
 
     public Tree() {
         root = new Node();

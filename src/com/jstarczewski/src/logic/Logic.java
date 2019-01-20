@@ -1,4 +1,4 @@
-package com.jstarczewski.logic;
+package com.jstarczewski.src.logic;
 
 
 import java.util.ArrayList;

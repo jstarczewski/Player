@@ -1,9 +1,9 @@
-package com.jstarczewski.controller;
+package com.jstarczewski.src.controller;
 
-import com.jstarczewski.logic.Logic;
-import com.jstarczewski.logic.Element;
-import com.jstarczewski.util.CallBackMessages;
-import com.jstarczewski.util.DataParser;
+import com.jstarczewski.src.logic.Logic;
+import com.jstarczewski.src.logic.Element;
+import com.jstarczewski.src.util.CallBackMessages;
+import com.jstarczewski.src.util.DataParser;
 
 
 public class GameController {

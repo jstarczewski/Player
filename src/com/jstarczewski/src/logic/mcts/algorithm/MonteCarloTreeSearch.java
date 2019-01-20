@@ -1,8 +1,8 @@
-package com.jstarczewski.logic.mcts.algorithm;
+package com.jstarczewski.src.logic.mcts.algorithm;
 
-import com.jstarczewski.logic.mcts.board.Board;
-import com.jstarczewski.logic.mcts.tree.Node;
-import com.jstarczewski.logic.mcts.tree.Tree;
+import com.jstarczewski.src.logic.mcts.board.Board;
+import com.jstarczewski.src.logic.mcts.tree.Node;
+import com.jstarczewski.src.logic.mcts.tree.Tree;
 
 import java.util.HashSet;
 
@@ -18,7 +18,9 @@ public class MonteCarloTreeSearch {
     }
 
     public Board findNextMove(Board board, int playerNo) {
-        long end = System.currentTimeMillis() + 30;
+
+        long end = System.currentTimeMillis() + 60;
+
         opponent = 3 - playerNo;
         Tree tree = new Tree();
         rootNode = tree.getRoot();

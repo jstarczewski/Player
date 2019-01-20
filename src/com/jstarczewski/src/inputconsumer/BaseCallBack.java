@@ -1,4 +1,4 @@
-package com.jstarczewski.inputconsumer;
+package com.jstarczewski.src.inputconsumer;
 
 public interface BaseCallBack {
 
