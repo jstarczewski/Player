@@ -1,4 +1,4 @@
-package com.jstarczewski;
+package com.jstarczewski.src;
 
 import com.jstarczewski.src.inputconsumer.GameInputConsumer;
 import com.jstarczewski.src.util.Injection;

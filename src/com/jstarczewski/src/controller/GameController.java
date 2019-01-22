@@ -19,8 +19,15 @@ public class GameController {
     }
 
     public String initBoard(String size) {
-        mctsLogic.initSize(Integer.valueOf(size));
-        return CallBackMessages.successCallback;
+        int boardSize = Integer.valueOf(size);
+        if (boardSize > 2) {
+            mctsLogic.initSize(boardSize);
+            isGameRunning = true;
+            return CallBackMessages.successCallback;
+        } else {
+            isGameRunning = false;
+            return CallBackMessages.illegalArgumentCallback;
+        }
     }
 
     public String initBlackSpots(String config) {
@@ -52,14 +59,8 @@ public class GameController {
             isGameRunning = false;
             return CallBackMessages.gameEndCallBack;
         } else if (input.toLowerCase().equals("start")) {
-            if (!isGameRunning) {
-                isGameRunning = true;
-                return makeStartMove();
-            } else {
-                return CallBackMessages.gameAlreadyStartedCallBack;
-            }
+            return makeStartMove();
         } else {
-            isGameRunning = true;
             return makeMove(input);
         }
     }
