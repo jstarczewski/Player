@@ -33,13 +33,12 @@ class GameControllerTest {
     }
 
     @Test
-    void initBlackSpotsException() {
+    void initBlackSpotsNumberFormatException() {
         assertThrows(NumberFormatException.class, () -> {
            controller.initBlackSpots("{0;not a number");
         });
 
     }
-
 
     @org.junit.jupiter.api.Test
     void initBlackSpots() {
@@ -64,6 +63,20 @@ class GameControllerTest {
         assertEquals(controller.responseBasedOnInput("stop"), CallBackMessages.gameEndCallBack);
     }
 
+    @Test
+    void responseBasedOnInputNumberFormatException() {
+        assertThrows(NumberFormatException.class, () -> {
+            controller.responseBasedOnInput("{0;a},{0;2}");
+        });
+    }
+
+    @Test
+    void responseBasedOnInputArrayOutOfBoundsException() {
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            controller.responseBasedOnInput("not a nubmer");
+        });
+    }
+
     @org.junit.jupiter.api.Test
     void responseBasedOnInputMove() {
         controller.initBoard("3");
@@ -73,11 +86,15 @@ class GameControllerTest {
 
     @org.junit.jupiter.api.Test
     void isGameRunning() {
-
+        controller.initBoard("3");
+        assertTrue(controller.isGameRunning());
+        controller.stopGame();
+        assertFalse(controller.isGameRunning());
     }
 
     @org.junit.jupiter.api.Test
     void stopGame() {
-
+        controller.stopGame();
+        assertFalse(controller.isGameRunning());
     }
 }

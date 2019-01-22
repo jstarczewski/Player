@@ -53,7 +53,6 @@ public class GameController {
         }
     }
 
-
     public String responseBasedOnInput(String input) {
         if (input.toLowerCase().equals("stop")) {
             isGameRunning = false;
