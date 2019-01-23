@@ -11,6 +11,7 @@ public class DataParser {
     public static int size;
 
     public static ArrayList<Element> parseInputData(String blackSpotDataConfiguration) {
+        // Element class must be splitted
         ArrayList<Element> elements = new ArrayList<>();
         String[] points = blackSpotDataConfiguration.split(",");
         for (String point : points) {
