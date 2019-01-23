@@ -37,8 +37,6 @@ class DataParserTest {
 
     @Test
     void parseOutputData() {
-
-
-
+       assertEquals(DataParser.parseOutputData(new Element(1,2)), "{0;0},{0;2}");
     }
 }
